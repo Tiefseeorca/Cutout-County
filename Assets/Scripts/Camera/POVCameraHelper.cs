@@ -6,9 +6,10 @@ public class POVCameraHelper : MonoBehaviour {
     private CinemachineInputAxisController _axisController;
     private bool _enabled;
 
-    private void Start() {
+    private void Awake() {
         _axisController = GetComponent<CinemachineInputAxisController>();
         // Event listener for enable at game start and disable
+        //GameManager.GameStarted.AddListener(_enable);
     }
 
     private void _enable() {

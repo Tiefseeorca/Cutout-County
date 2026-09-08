@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -23,5 +24,13 @@ public class GameManager : MonoBehaviour {
 
 	private void Start() {
 		_gameFlags = Instantiate(_gameFlags);
+		StartCoroutine(_startGame());
+	}
+
+	private IEnumerator _startGame() {
+		for (int i = 0; i < 1; i++) {
+			yield return null;
+		}
+		GameStarted.Invoke();
 	}
 }

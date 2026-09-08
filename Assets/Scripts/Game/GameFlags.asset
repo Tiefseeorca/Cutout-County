@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60f39f33ac60c8746a919686762d203c, type: 3}
   m_Name: GameFlags
   m_EditorClassIdentifier: Assembly-CSharp::GameFlags
-  _gameFlags: []
+  _gameFlags:
+  - Id: Test
+    Value: 0
