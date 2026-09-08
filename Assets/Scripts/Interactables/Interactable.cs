@@ -6,7 +6,21 @@ public abstract class Interactable : MonoBehaviour {
     [SerializeField] protected InputAction _interactAction;
     public bool blocksOtherInteractions;
 
-    protected bool _checkForInteractable() {
+    private void OnEnable(){
+        _interactAction.Enable();
+    }
+
+    private void OnDisable(){
+        _interactAction.Disable();
+    }
+
+    protected virtual void Update(){
+        if (_interactAction.WasPressedThisFrame() && _checkForInteractable()){
+            TryInteract();
+        }
+    }
+    
+    protected bool _checkForInteractable(){
         return Vector3.Distance(transform.position, PlayerController.Instance.transform.position) <= _interactionRange;
     }
 
