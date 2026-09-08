@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour{
         _rb.linearVelocity = new Vector3(moveDirection.x * speed, _rb.linearVelocity.y, moveDirection.z * speed );
     }
 
-    private void Update() {
+    private void Update(){
         bool isGrounded = Physics.Raycast(transform.position, Vector3.down, groundCheckDistance);
         bool jumpPressed = _jumpAction.WasPressedThisFrame();
         if (jumpPressed && isGrounded){
