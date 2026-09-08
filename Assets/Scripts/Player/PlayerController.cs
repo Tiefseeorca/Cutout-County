@@ -2,17 +2,21 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour{
+public class PlayerController : MonoBehaviour {
+    public static PlayerController Instance;
     public float speed = 3f;
     public float jumpForce = 5f;
     public float groundCheckDistance = 1f;
+
+    private bool _inInteraction;
     
     private Rigidbody _rb;
     private InputAction _walkAction;
     private InputAction _jumpAction;
     private Transform _cameraTransform;
 
-    void Start(){
+    void Start() {
+        Instance = this;
         _rb = GetComponent<Rigidbody>();
         _walkAction = InputSystem.actions.FindAction("Move");
         _jumpAction = InputSystem.actions.FindAction("Jump");
