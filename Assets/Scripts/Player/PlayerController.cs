@@ -1,36 +1,37 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour{
     public float speed = 3f;
     public float jumpForce = 5f;
-    public float groundCheckDistance = 0.3f;
+    public float groundCheckDistance = 1f;
     
-    private Rigidbody rb;
+    private Rigidbody _rb;
+    private InputAction _walkAction;
+    private InputAction _jumpAction;
+    private Transform _cameraTransform;
 
     void Start(){
-        rb = GetComponent<Rigidbody>();
+        _rb = GetComponent<Rigidbody>();
+        _walkAction = InputSystem.actions.FindAction("Move");
+        _jumpAction = InputSystem.actions.FindAction("Jump");
+        _cameraTransform = transform.GetChild(0);
     }
 
     void FixedUpdate(){
-        Vector2 input = InputSystem.actions.FindAction("Move").ReadValue<Vector2>();
-        Vector3 moveDirection = transform.forward * (-input.x) + transform.right * input.y;
+        Vector2 input = _walkAction.ReadValue<Vector2>();
+        Vector3 moveDirection = _cameraTransform.forward * input.y + _cameraTransform.right * input.x;
         
-        rb.linearVelocity = new Vector3(moveDirection.x * speed, rb.linearVelocity.y, moveDirection.z * speed );
-        Debug.Log(input);
+        _rb.linearVelocity = new Vector3(moveDirection.x * speed, _rb.linearVelocity.y, moveDirection.z * speed );
     }
 
-    void Update(){
-        // Vector3 rayStartPos = transform.position + Vector3.down * 0.8f;
+    private void Update() {
         bool isGrounded = Physics.Raycast(transform.position, Vector3.down, groundCheckDistance);
-        bool jumpPressed = InputSystem.actions.FindAction("Jump").WasPressedThisFrame();{
-            
-            if (jumpPressed && isGrounded){
-                rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
-                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            }
+        bool jumpPressed = _jumpAction.WasPressedThisFrame();
+        if (jumpPressed && isGrounded){
+            _rb.linearVelocity = new Vector3(_rb.linearVelocity.x, 0, _rb.linearVelocity.z);
+            _rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
     }
-    
-    
 }
