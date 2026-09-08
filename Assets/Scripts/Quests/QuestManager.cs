@@ -8,19 +8,41 @@ public class QuestManager : MonoBehaviour {
     private List<Quest> _completedQuests;
     private List<Quest> _inactiveQuests;
 
+    public void AddQuest(Quest quest) {
+        _inactiveQuests.Add(quest);
+    }
+
     public void ActivateQuest(string questId) {
-        throw new NotImplementedException("TODO");
+        foreach (Quest quest in _inactiveQuests) {
+            if (quest.Id == questId) {
+                _activeQuests.Add(quest);
+                _inactiveQuests.Remove(quest);
+                QuestProgressUpdated();
+                return;
+            }
+        }
     }
 
     public void CompleteQuest(string questId) {
-        throw new NotImplementedException("TODO");
+        foreach (Quest quest in _activeQuests) {
+            if (quest.Id == questId) {
+                _completedQuests.Add(quest);
+                _activeQuests.Remove(quest);
+                QuestProgressUpdated();
+                return;
+            }
+        }
     }
 
-    public void QuestProgressUpdated(string questId) {
-        throw new NotImplementedException("TODO");
+    public void QuestProgressUpdated() {
+        UIManager.Instance.displayQuests(GetActiveQuestDescriptions());
     }
 
-    public List<string> GetActiveQuests() {
-        throw new NotImplementedException("TODO");
+    public List<string> GetActiveQuestDescriptions() {
+        List<string> descs = new();
+        foreach (Quest quest in _activeQuests) {
+            descs.Add(quest.GetDisplayText());
+        }
+        return descs;
     }
 }
