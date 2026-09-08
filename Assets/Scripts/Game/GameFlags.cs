@@ -23,10 +23,11 @@ public class GameFlags : ScriptableObject {
     public static UnityEvent<Flag> FlagChanged = new();
     [SerializeField] private Flag[] _gameFlags;
 
-    private void Awake() {
-        for (int i = 0; i < _gameFlags.Length; i++) {
-            _gameFlags[i] = new Flag(_gameFlags[i].Id, _gameFlags[i].Value);
+    public Flag GetFlagById(string Id) {
+        foreach (Flag flag in _gameFlags) {
+            if (flag.Id == Id) return flag;
         }
+        return new Flag("Empty", false);
     }
 
     public void SetGameFlag(string id, bool val) {
