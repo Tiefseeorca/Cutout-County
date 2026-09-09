@@ -8,6 +8,10 @@ public class QuestManager : MonoBehaviour {
     private List<Quest> _completedQuests;
     private List<Quest> _inactiveQuests;
 
+    private void Awake() {
+        Instance = this;
+    }
+
     public void AddQuest(Quest quest) {
         _inactiveQuests.Add(quest);
     }

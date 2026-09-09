@@ -10,6 +10,10 @@ public class GameManager : MonoBehaviour {
 
 	public bool IsPaused;
 
+	private void Awake() {
+		Instance = this;
+	}
+
 	public void PauseGame() {
 		throw new NotImplementedException("TODO");
 	}
@@ -20,6 +24,10 @@ public class GameManager : MonoBehaviour {
 
 	public bool GetFlagValue(string flagId) {
 		return _gameFlags.GetFlagById(flagId).Value;
+	}
+
+	public void SetFlagValue(string flagId, bool value) {
+		_gameFlags.SetGameFlag(flagId, value);
 	}
 
 	private void Start() {

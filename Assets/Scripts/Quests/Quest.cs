@@ -30,6 +30,7 @@ public class Quest : ScriptableObject {
     private void _complete() {
         _active = false;
         _completed = true;
+        GameFlags.FlagChanged.RemoveListener(_checkFlags);
         QuestManager.Instance.CompleteQuest(Id);
     }
 
