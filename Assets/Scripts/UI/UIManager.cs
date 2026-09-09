@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
+using TMPro;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour {
@@ -7,11 +9,21 @@ public class UIManager : MonoBehaviour {
     [SerializeField] private GameObject _pauseScreen;
     [SerializeField] private GameObject _optionsScreen;
     [SerializeField] private GameObject _dialogueBox;
-    
+    [SerializeField] private TextMeshProUGUI _questsDisplay;
+
+    private void Awake() {
+        Instance = this;
+    }
+
     // In Gameplay
 
     public void displayQuests(List<string> questTexts) {
-        throw new NotImplementedException("TODO");
+        StringBuilder displayText = new StringBuilder();
+        foreach (string line in questTexts) {
+            displayText.Append(line);
+            displayText.Append("\n");
+        }
+        _questsDisplay.text = displayText.ToString();
     }
 
     public void playDialogue(List<string> dialogueBoxes) {

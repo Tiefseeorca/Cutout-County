@@ -4,16 +4,24 @@ using UnityEngine;
 
 public class QuestManager : MonoBehaviour {
     public static QuestManager Instance;
-    private List<Quest> _activeQuests;
-    private List<Quest> _completedQuests;
-    private List<Quest> _inactiveQuests;
+    private List<Quest> _activeQuests = new();
+    private List<Quest> _completedQuests = new();
+    [SerializeField] private List<Quest> _inactiveQuests;
 
     private void Awake() {
         Instance = this;
     }
 
-    public void AddQuest(Quest quest) {
-        _inactiveQuests.Add(quest);
+    private void Start() {
+        List<Quest> reinstantiatedList = new();
+        foreach (Quest quest in _inactiveQuests) {
+            Quest newQuest = Instantiate(quest);
+            reinstantiatedList.Add(newQuest);
+            newQuest.AddFlagListener();
+        }
+
+        _inactiveQuests = reinstantiatedList;
+        //foreach(Quest quest in _inactiveQuests) quest.AddFlagListener();
     }
 
     public void ActivateQuest(string questId) {

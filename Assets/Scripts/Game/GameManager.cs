@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class GameManager : MonoBehaviour {
 	public static GameManager Instance;
 	public static UnityEvent GameStarted = new();
+	//public static UnityEvent<Flag> FlagChanged = new();
 	[SerializeField] private GameFlags _gameFlags;
 
 	public bool IsPaused;
@@ -36,9 +37,15 @@ public class GameManager : MonoBehaviour {
 	}
 
 	private IEnumerator _startGame() {
-		for (int i = 0; i < 1; i++) {
+		for (int i = 0; i < 2; i++) {
 			yield return null;
 		}
 		GameStarted.Invoke();
+		yield return new WaitForSeconds(2);
+		SetFlagValue("TestQuestActivationReq", true);
+		yield return new WaitForSeconds(2);
+		SetFlagValue("TestQuestCompletionReq", true);
+		yield return new WaitForSeconds(2);
+		SetFlagValue("TestQuestCompletionReq2", false);
 	}
 }
