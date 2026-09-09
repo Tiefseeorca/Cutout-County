@@ -248,3 +248,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   speed: 5
   jumpForce: 5
+  groundCheckDistance: 1.1
