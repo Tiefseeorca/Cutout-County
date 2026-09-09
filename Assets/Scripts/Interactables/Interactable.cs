@@ -19,10 +19,19 @@ public abstract class Interactable : MonoBehaviour {
             TryInteract();
         }
     }
-    
-    protected bool _checkForInteractable(){
-        return Vector3.Distance(transform.position, PlayerController.Instance.transform.position) <= _interactionRange;
-    }
 
+    protected bool _checkForInteractable() {
+        Camera mainCam = Camera.main;
+        if (mainCam == null) return false;
+
+        Ray castRay = new Ray(mainCam.transform.position, mainCam.transform.forward);
+        RaycastHit hit;
+        if (Physics.Raycast(castRay, out hit, _interactionRange)){
+            return hit.transform == transform;
+        }
+        return false;
+    }
+    
+    
     public abstract void TryInteract();
 }
