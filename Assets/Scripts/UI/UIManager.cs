@@ -1,28 +1,60 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Text;
+using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class UIManager : MonoBehaviour {
     public static UIManager Instance;
     [SerializeField] private GameObject _pauseScreen;
     [SerializeField] private GameObject _optionsScreen;
     [SerializeField] private GameObject _dialogueBox;
-    
+    private TextMeshProUGUI _dialogueBoxText;
+    private DialogueHelper _dialogueHelper;
+    private InputAction _dialogueContinueAction;
+    [SerializeField] private TextMeshProUGUI _questsDisplay;
+
+    private void Awake() {
+        Instance = this;
+        _dialogueBoxText = _dialogueBox.GetComponentInChildren<TextMeshProUGUI>();
+        _dialogueContinueAction = InputSystem.actions.FindAction("Jump");
+    }
+
     // In Gameplay
 
     public void displayQuests(List<string> questTexts) {
-        throw new NotImplementedException("TODO");
+        StringBuilder displayText = new StringBuilder();
+        foreach (string line in questTexts) {
+            displayText.Append(line);
+            displayText.Append("\n");
+        }
+        _questsDisplay.text = displayText.ToString();
     }
 
-    public void playDialogue(List<string> dialogueBoxes) {
-        throw new NotImplementedException("TODO");
+    public void PlayDialogue(List<string> dialogueBoxes) {
+        _dialogueBox.SetActive(true);
+        _dialogueHelper = new DialogueHelper(dialogueBoxes, _displaySingleDialogueText);
+        StartCoroutine(_listenForDialogueContinueInput());
     }
 
-    public void _displaySingleDialogueText(string text) {
-        throw new NotImplementedException("TODO");
+    private void _displaySingleDialogueText(string text) {
+        _dialogueBoxText.text = text;
+    }
+
+    private IEnumerator _listenForDialogueContinueInput() {
+        bool inDialogue = true;
+        while (inDialogue) {
+            inDialogue = _dialogueHelper.DisplayNextText();
+            yield return new WaitUntil(() => _dialogueContinueAction.IsPressed());
+        }
+        _dialogueHelper = null;
+        _dialogueBox.SetActive(false);
+        Dialogue.DialogueFinished.Invoke();
     }
     
-    // On Button Press
+    // On Button / Key Press
 
     public void Pause() {
         throw new NotImplementedException("TODO");

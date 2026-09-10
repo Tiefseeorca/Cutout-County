@@ -12,4 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60f39f33ac60c8746a919686762d203c, type: 3}
   m_Name: GameFlags
   m_EditorClassIdentifier: Assembly-CSharp::GameFlags
-  _gameFlags: []
+  _gameFlags:
+  - Id: TestQuestActivationReq
+    Value: 0
+  - Id: TestQuestCompletionReq
+    Value: 0
+  - Id: TestQuestCompletionReq2
+    Value: 1
+  - Id: TestQuestCompletionReq3
+    Value: 0
+  - Id: TestQuest_COMPLETED
+    Value: 0

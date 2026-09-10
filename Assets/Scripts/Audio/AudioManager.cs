@@ -7,6 +7,10 @@ public class AudioManager : MonoBehaviour {
     private Dictionary<AudioIDs, AudioClip> _musicClips;
     private Dictionary<AudioIDs, AudioClip> _sfxClips;
 
+    private void Awake() {
+        Instance = this;
+    }
+
     public void PlayMusic(AudioIDs audioId) {
         throw new NotImplementedException("TODO");
     }
