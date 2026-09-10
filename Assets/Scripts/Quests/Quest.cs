@@ -1,23 +1,23 @@
 using System;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "Quest", menuName = "Scriptable Objects/Quest")]
 public class Quest : ScriptableObject {
     public string Id;
-    private bool _active;
-    private bool _completed;
-    private string _text;
+    [SerializeField] private bool _active;
+    [SerializeField] private bool _completed;
+    [SerializeField] private string _text;
     public Flag[] FlagsToActivate;
     public Flag[] FlagsToComplete;
 
-    private void Awake() {
+    public void AddFlagListener() {
         GameFlags.FlagChanged.AddListener(_checkFlags);
-        QuestManager.Instance.AddQuest(this);
     }
 
     public string GetDisplayText() {
         string res = _text;
         if (FlagsToComplete.Length > 1) {
-            res += $" ({_getMatchingFlagAmount(FlagsToComplete)}/{FlagsToComplete.Length}";
+            res += $" ({_getMatchingFlagAmount(FlagsToComplete)}/{FlagsToComplete.Length})";
         }
         return res;
     }
@@ -30,6 +30,7 @@ public class Quest : ScriptableObject {
     private void _complete() {
         _active = false;
         _completed = true;
+        GameFlags.FlagChanged.RemoveListener(_checkFlags);
         QuestManager.Instance.CompleteQuest(Id);
     }
 
