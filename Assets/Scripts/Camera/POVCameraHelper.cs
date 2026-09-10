@@ -4,21 +4,18 @@ using UnityEngine;
 
 public class POVCameraHelper : MonoBehaviour {
     private CinemachineInputAxisController _axisController;
-    private bool _enabled;
 
     private void Awake() {
         _axisController = GetComponent<CinemachineInputAxisController>();
         // Event listener for enable at game start and disable
-        GameManager.GameStarted.AddListener(_enable);
+        GameManager.GameStarted.AddListener(Enable);
     }
 
-    private void _enable() {
-        _enabled = true;
+    public void Enable() {
         _axisController.enabled = true;
     }
 
-    private void _disable() {
-        _enabled = false;
+    public void Disable() {
         _axisController.enabled = false;
     }
 }

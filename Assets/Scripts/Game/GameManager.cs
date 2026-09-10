@@ -30,10 +30,29 @@ public class GameManager : MonoBehaviour {
 	public void SetFlagValue(string flagId, bool value) {
 		_gameFlags.SetGameFlag(flagId, value);
 	}
+	
+	public int GetMatchingFlagAmount(Flag[] flags) {
+		int counter = 0;
+		foreach (Flag flag in flags) {
+			if (GetFlagValue(flag.Id) == flag.Value) counter++;
+		}
+		return counter;
+	}
+
+	public bool DoFlagsMatch(Flag[] flags) {
+		foreach (Flag flag in flags) {
+			if (GetFlagValue(flag.Id) != flag.Value) return false;
+		}
+		return true;
+	}
 
 	private void Start() {
 		_gameFlags = Instantiate(_gameFlags);
 		StartCoroutine(_startGame());
+	}
+
+	private void _doDialogue(Dialogue dialogue) {
+		UIManager.Instance.PlayDialogue(dialogue.TextBoxes);
 	}
 
 	private IEnumerator _startGame() {

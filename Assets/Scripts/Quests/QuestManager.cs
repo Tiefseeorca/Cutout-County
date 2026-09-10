@@ -41,6 +41,7 @@ public class QuestManager : MonoBehaviour {
                 _completedQuests.Add(quest);
                 _activeQuests.Remove(quest);
                 QuestProgressUpdated();
+                GameManager.Instance.SetFlagValue(questId + "_COMPLETED", true);
                 return;
             }
         }

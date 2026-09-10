@@ -6,14 +6,16 @@ using UnityEngine.InputSystem;
 public class DialogueHelper {
     private List<string> _texts;
     private int _currentPointer;
-    [SerializeField] private InputAction _continueAction;
+    private Action<string> _displayFunction;
 
-    public DialogueHelper(List<string> texts) {
+    public DialogueHelper(List<string> texts, Action<string> displayFunction) {
         _texts = texts;
-        throw new NotImplementedException("TODO");
+        _displayFunction = displayFunction;
     }
     
-    private void _displayNextText() {
-        throw new NotImplementedException("TODO");
+    public bool DisplayNextText() {
+        if (_currentPointer >= _texts.Count) return true;
+        _displayFunction(_texts[_currentPointer++]);
+        return false;
     }
 }
