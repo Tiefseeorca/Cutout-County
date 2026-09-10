@@ -41,11 +41,5 @@ public class GameManager : MonoBehaviour {
 			yield return null;
 		}
 		GameStarted.Invoke();
-		yield return new WaitForSeconds(2);
-		SetFlagValue("TestQuestActivationReq", true);
-		yield return new WaitForSeconds(2);
-		SetFlagValue("TestQuestCompletionReq", true);
-		yield return new WaitForSeconds(2);
-		SetFlagValue("TestQuestCompletionReq2", false);
 	}
 }

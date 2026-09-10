@@ -19,3 +19,5 @@ MonoBehaviour:
     Value: 0
   - Id: TestQuestCompletionReq2
     Value: 1
+  - Id: TestQuestCompletionReq3
+    Value: 0

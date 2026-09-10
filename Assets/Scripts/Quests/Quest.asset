@@ -15,7 +15,7 @@ MonoBehaviour:
   Id: TestQuest
   _active: 0
   _completed: 0
-  _text: Complete the TestQuest!
+  _text: Collect the Spheres!
   FlagsToActivate:
   - Id: TestQuestActivationReq
     Value: 1
@@ -24,3 +24,5 @@ MonoBehaviour:
     Value: 1
   - Id: TestQuestCompletionReq2
     Value: 0
+  - Id: TestQuestCompletionReq3
+    Value: 1
