@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour {
     private InputAction _walkAction;
     private InputAction _jumpAction;
     private Transform _cameraTransform;
+    private POVCameraHelper _camera;
 
     void Start() {
         Instance = this;
@@ -30,14 +31,15 @@ public class PlayerController : MonoBehaviour {
         _walkAction = InputSystem.actions.FindAction("Move");
         _jumpAction = InputSystem.actions.FindAction("Jump");
         _cameraTransform = transform.GetChild(0).GetChild(0);
+        _camera = _cameraTransform.GetComponent<POVCameraHelper>();
     }
 
     void FixedUpdate(){
-        Vector2 input = _walkAction.ReadValue<Vector2>();
-        Vector3 moveDirection = _cameraTransform.forward * input.y + _cameraTransform.right * input.x;
-        
-        _rb.linearVelocity = new Vector3(moveDirection.x * speed, _rb.linearVelocity.y, moveDirection.z * speed );
-
+        if (!_inInteraction) {
+            Vector2 input = _walkAction.ReadValue<Vector2>();
+            Vector3 moveDirection = _cameraTransform.forward * input.y + _cameraTransform.right * input.x;
+            _rb.linearVelocity = new Vector3(moveDirection.x * speed, _rb.linearVelocity.y, moveDirection.z * speed);
+        }
         RaycastHit hit;
         _grounded = Physics.Raycast(transform.position, Vector3.down, out hit, _distanceToGround) && !_inJump;
         if (_grounded) {
@@ -64,6 +66,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void Update() {
+        if (_inInteraction) return;
         bool jumpPressed = _jumpAction.WasPressedThisFrame();
         if (jumpPressed && _grounded){
             _rb.linearVelocity = new Vector3(_rb.linearVelocity.x, 0, _rb.linearVelocity.z);
@@ -72,5 +75,15 @@ public class PlayerController : MonoBehaviour {
             _grounded = false;
             StartCoroutine(_increaseGravityInJump());
         }
+    }
+
+    public void TakeAwayControl() {
+        _inInteraction = true;
+        _camera.Disable();
+    }
+
+    public void GiveBackControl() {
+        _inInteraction = false;
+        _camera.Enable();
     }
 }
