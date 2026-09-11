@@ -8,9 +8,12 @@ public class GoldCoin : Interactable {
     private bool _isCollected;
 
     private void _collect(){
+        GameManager.Instance.SetFlagValue(_flagId, true);
         CoinCollected?.Invoke(_flagId);
+        
+        //bool checkValue = GameManager.Instance.GetFlagValue(_flagId);
+        //Debug.Log($"Münze {_flagId} eingesammelt. Wert im GameManager ist jezt: {checkValue}");
         Destroy(gameObject);
-        Debug.Log("Coin collected");
     }
     
     public override void TryInteract(){

@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 public class NPC : Interactable{
     public string Name;
     [SerializeField] private GameObject _questSymbol;
+    //[SerializeField] private InputAction _cancelAction;
     private bool _inConversation;
     
     public override void TryInteract(){
@@ -16,22 +17,20 @@ public class NPC : Interactable{
         if (_questSymbol != null){
             _questSymbol.SetActive(false);
         }
-        Debug.Log("Dialog mit NPC gestartet. Drücke ESC zum beenden");
-    }
-
-    protected override void Update(){
-        base.Update();
         
-        if (_inConversation){
-            if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame){
-                _endConversation();
-            }
-        }
+        PlayerController.Instance.TakeAwayControl();
+        Dialogue nextDialogue = DialogueManager.Instance.GetNextDialogue(Name);
+        UIManager.Instance.PlayDialogue(nextDialogue.TextBoxes);
+        Dialogue.DialogueFinished.AddListener(_endConversation);
+        //Debug.Log("Dialog mit NPC gestartet. Drücke ESC zum beenden");
     }
 
     private void _endConversation(){
         _inConversation = false;
         blocksOtherInteractions = false;
-        Debug.Log("Dialog mit NPC beendet");
+        
+        PlayerController.Instance.GiveBackControl();
+        Dialogue.DialogueFinished.RemoveListener(_endConversation);
+        //Debug.Log("Dialog mit NPC beendet");
     }
 }
