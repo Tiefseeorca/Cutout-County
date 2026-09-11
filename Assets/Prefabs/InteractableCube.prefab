@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b50d32151a68a84799ed261284895ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ColorChangeCube
-  _interactionRange: 1
+  _interactionRange: 3
   _interactAction:
     m_Name: Interact
     m_Type: 0

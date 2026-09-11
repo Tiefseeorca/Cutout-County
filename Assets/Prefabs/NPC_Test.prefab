@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4e9eaab94129474694587ba5d731790, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPC
-  _interactionRange: 3
+  _interactionRange: 4
   _interactAction:
     m_Name: Interact
     m_Type: 0
@@ -146,5 +146,5 @@ MonoBehaviour:
       m_Flags: 0
     m_Flags: 0
   blocksOtherInteractions: 1
-  Name: 
+  Name: Test_NPC
   _questSymbol: {fileID: 0}
