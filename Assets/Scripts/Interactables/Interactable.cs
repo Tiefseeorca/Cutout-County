@@ -6,9 +6,32 @@ public abstract class Interactable : MonoBehaviour {
     [SerializeField] protected InputAction _interactAction;
     public bool blocksOtherInteractions;
 
-    protected bool _checkForInteractable() {
-        return Vector3.Distance(transform.position, PlayerController.Instance.transform.position) <= _interactionRange;
+    private void OnEnable(){
+        _interactAction.Enable();
     }
 
+    private void OnDisable(){
+        _interactAction.Disable();
+    }
+
+    protected virtual void Update(){
+        if (_interactAction.WasPressedThisFrame() && _checkForInteractable()){
+            TryInteract();
+        }
+    }
+
+    protected bool _checkForInteractable() {
+        Camera mainCam = Camera.main;
+        if (mainCam == null) return false;
+
+        Ray castRay = new Ray(mainCam.transform.position, mainCam.transform.forward);
+        RaycastHit hit;
+        if (Physics.Raycast(castRay, out hit, _interactionRange)){
+            return hit.transform == transform;
+        }
+        return false;
+    }
+    
+    
     public abstract void TryInteract();
 }

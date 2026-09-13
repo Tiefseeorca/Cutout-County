@@ -23,3 +23,9 @@ MonoBehaviour:
     Value: 0
   - Id: TestQuest_COMPLETED
     Value: 0
+  - Id: coin_1
+    Value: 0
+  - Id: coin_2
+    Value: 0
+  - Id: coin_3
+    Value: 0
