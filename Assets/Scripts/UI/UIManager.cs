@@ -18,7 +18,13 @@ public class UIManager : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI _questsDisplay;
 
     private void Awake(){
-        
+        Instance = this;
+
+        if (_dialogueBox != null){
+            _dialogueBoxText = _dialogueBox.GetComponentInChildren<TextMeshProUGUI>();
+        }
+
+        _dialogueContinueAction = InputSystem.actions.FindAction("Jump");
     }
 
     // In Gameplay
