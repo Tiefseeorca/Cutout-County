@@ -1,17 +1,28 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CanShootingRange : Minigame {
 	[SerializeField] private GameObject _canPrefab;
+	[SerializeField] private GameObject _sparksPrefab;
 	[SerializeField] private float _startCanCooldown;
 	[SerializeField] private float _minCanCooldown;
 	[SerializeField] private float _gameDuration;
 	[SerializeField] private float _canLaunchForce;
 	private float _gameRuntime;
 	private float _cooldownTimer;
+	private InputAction _mousePosition;
+	private InputAction _shootAction;
+	private int _hitChain;
 
 	private void Start() {
+		_shootAction = InputSystem.actions.FindAction("Attack");
+		_mousePosition = InputSystem.actions.FindAction("MousePosition");
 		this.StartMinigame();
+	}
+
+	private void _increaseScore(int timesHit) {
+		Score += timesHit * _hitChain;
 	}
 
 	/// <summary>Spawns a can on a random position along the local x-axis with a random angle that keeps the can inside the game space.</summary>
@@ -43,7 +54,22 @@ public class CanShootingRange : Minigame {
 			_spawnCan();
 			_setCooldown();
 		}
-		// TODO: Implement click recognition here or in Can via OnMouseOver
+		// TODO: Implement click detection here or in Can via OnMouseOver
+		if (_shootAction.WasPressedThisFrame()) {
+			Vector2 mousePos = _mousePosition.ReadValue<Vector2>();
+			Ray aimRay = CameraManager.Instance.MainCamera.ScreenPointToRay(mousePos);
+			RaycastHit aimHit;
+			if (Physics.Raycast(aimRay, out aimHit)) {
+				Can hitCan = aimHit.collider.GetComponent<Can>();
+				if (hitCan) {
+					_hitChain++;
+					Destroy(Instantiate(_sparksPrefab, aimHit.point, Quaternion.identity), 1f);
+					hitCan.OnHit();
+				} else {
+					_hitChain = 0;
+				}
+			}
+		}
 	}
 	protected override void _finishOffGame() {
 		Debug.LogWarning("TODO: Implement score display of minigame");

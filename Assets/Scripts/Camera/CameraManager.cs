@@ -9,12 +9,14 @@ public class CameraManager : MonoBehaviour {
 	[SerializeField] private CinemachineCamera StartCamera;
 	public CinemachineCamera PlayerCamera;
 	private CinemachineCamera _currentCamera;
+	public Camera MainCamera;
 
 	[SerializeField] private int ActivePriority;
 	[SerializeField] private int InactivePriority;
 
 	private void Awake() {
 		Instance = this;
+		MainCamera = Camera.main;
 		_currentCamera = StartCamera;
 		foreach (CinemachineCamera camera in Cameras) {
 			if (camera == _currentCamera) {

@@ -10,15 +10,16 @@ public class Can : MonoBehaviour {
     private int _timesHit = 0;
     [SerializeField] private float _spinSpeed;
     [SerializeField] private float _hitForce;
+    [SerializeField] private GameObject _sparksParticles;
     private Rigidbody _rb;
     private Vector3 _torque;
     private float _despawnHeight;
+    
 
     private void Awake() {
         _rb = GetComponent<Rigidbody>();
         _torque = new Vector3(Random.value, Random.value, Random.value).normalized * _spinSpeed;
         _despawnHeight = transform.position.y;
-        _applySpin();
     }
 
     /// <summary>Resets the can back to standard values and rotation for the use in ObjectPooling.</summary>
@@ -27,6 +28,7 @@ public class Can : MonoBehaviour {
         transform.rotation = Quaternion.identity;
         _rb.linearVelocity = Vector3.zero;
         _rb.angularVelocity = Vector3.zero;
+        _rb.mass = 1;
     }
 
     private void _applySpin() {
@@ -36,6 +38,7 @@ public class Can : MonoBehaviour {
     public void OnHit() {
         _timesHit++;
         CanGotHit.Invoke(_timesHit);
+        _applySpin();
     }
 
     public void LaunchWithForce(Vector3 force) {
@@ -44,13 +47,10 @@ public class Can : MonoBehaviour {
 
     private void Update() {
         if (transform.position.y < _despawnHeight) _despawn();
+        else if (_rb.linearVelocity.y < 0) _rb.mass = 0.1f;
     }
 
     private void _despawn() {
         Destroy(gameObject);
-    }
-
-    private void OnMouseOver() {
-        // TODO: Implement click recognition via this or in CanShootingRange
     }
 }
