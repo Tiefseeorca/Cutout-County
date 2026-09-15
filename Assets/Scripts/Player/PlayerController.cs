@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour {
     private Transform _cameraTransform;
     private POVCameraHelper _camera;
 
-    void Start() {
+    void Awake() {
         Instance = this;
         _rb = GetComponent<Rigidbody>();
         _mass = _rb.mass;
