@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 
 public class UIManager : MonoBehaviour {
@@ -16,9 +17,13 @@ public class UIManager : MonoBehaviour {
     private InputAction _dialogueContinueAction;
     [SerializeField] private TextMeshProUGUI _questsDisplay;
 
-    private void Awake() {
+    private void Awake(){
         Instance = this;
-        _dialogueBoxText = _dialogueBox.GetComponentInChildren<TextMeshProUGUI>();
+
+        if (_dialogueBox != null){
+            _dialogueBoxText = _dialogueBox.GetComponentInChildren<TextMeshProUGUI>();
+        }
+
         _dialogueContinueAction = InputSystem.actions.FindAction("Jump");
     }
 
@@ -77,13 +82,14 @@ public class UIManager : MonoBehaviour {
     }
     
     // Main Menu
-
-    public void StartGame() {
-        throw new NotImplementedException("TODO");
+    
+    public void StartGame(){
+        _loadScene("SampleScene");
     }
-
-    public void QuitGame() {
-        throw new NotImplementedException("TODO");
+    
+    public void QuitGame(){
+        Debug.Log("Quitting game");
+        Application.Quit();
     }
     
     // Options
@@ -102,7 +108,7 @@ public class UIManager : MonoBehaviour {
     
     // Helpers
 
-    private void _loadScene(string sceneName) {
-        throw new NotImplementedException("TODO");
+    private void _loadScene(string sceneName){
+        SceneManager.LoadScene(sceneName);
     }
 }
