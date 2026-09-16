@@ -1033,6 +1033,11 @@ MonoBehaviour:
   _optionsScreen: {fileID: 1140431722}
   _dialogueBox: {fileID: 813219512}
   _questsDisplay: {fileID: 1709297444}
+  _minigameEndscreen: {fileID: 0}
+  _minigameFinalScoreDisplay: {fileID: 0}
+  _minigameHighscoreDisplay: {fileID: 0}
+  _minigameUI: {fileID: 0}
+  _minigameScoreDisplay: {fileID: 0}
 --- !u!114 &456136863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1560,6 +1565,7 @@ MonoBehaviour:
   _springStrength: 4800
   _springDamper: 800
   _maxMass: 600
+  InInteraction: 0
   _grounded: 0
   _inJump: 0
 --- !u!54 &821853336
