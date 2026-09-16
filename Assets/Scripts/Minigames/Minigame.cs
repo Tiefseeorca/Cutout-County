@@ -3,7 +3,7 @@ using Unity.Cinemachine;
 using UnityEngine;
 
 public abstract class Minigame : MonoBehaviour {
-    public const float MinigameEndScreenDuration = 3f;
+    public const float MinigameEndScreenDuration = 4f;
     [SerializeField] private CinemachineCamera _camera;
     protected bool _active;
     protected bool _ingame;
@@ -20,13 +20,14 @@ public abstract class Minigame : MonoBehaviour {
         _ingame = true;
         Score = 0;
         _resetGame();
+        UIManager.Instance.ShowMinigameUI();
+        UIManager.Instance.UpdateMinigameScore(Score);
     }
     
     /// <summary>Call this to give the player control back and resume the game like normal, stopping the minigame. Use this to either cancel an ongoing minigame or at the end of one.</summary>
     public void EndMinigame() {
         _active = false;
         _ingame = false;
-        if (Score > Highscore) Highscore = Score;
         CameraManager.Instance.SwitchTo(CameraManager.Instance.PlayerCamera);
         PlayerController.Instance.GiveBackControl();
     }

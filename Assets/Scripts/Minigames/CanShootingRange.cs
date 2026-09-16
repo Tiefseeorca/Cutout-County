@@ -22,11 +22,12 @@ public class CanShootingRange : Minigame {
 		_shootAction = InputSystem.actions.FindAction("Attack");
 		_mousePosition = InputSystem.actions.FindAction("MousePosition");
 		Can.CanGotHit.AddListener(_increaseScore);
-		this.StartMinigame();
 	}
 
 	private void _increaseScore(int timesHit) {
 		Score += timesHit * _hitChain;
+		if (Score > Highscore) Highscore = Score;
+		UIManager.Instance.UpdateMinigameScore(Score);
 	}
 
 	/// <summary>Spawns a can on a random position along the local x-axis with a random angle that keeps the can inside the game space.</summary>
@@ -34,9 +35,9 @@ public class CanShootingRange : Minigame {
 		// TODO: include the randomness
 		float posVariation = Random.Range(-_spawnRadius, _spawnRadius);
 		float angleVariation = Random.Range(-_spawnRadius, _spawnRadius) - posVariation;
-		GameObject canObject = Instantiate(_canPrefab, transform.position + posVariation * transform.forward, Quaternion.identity);
+		GameObject canObject = Instantiate(_canPrefab, transform.position + posVariation * transform.right, Quaternion.identity);
 		Can can = canObject.GetComponent<Can>();
-		can.LaunchWithForce(Vector3.up * _canLaunchForce + angleVariation * transform.forward);
+		can.LaunchWithForce(Vector3.up * _canLaunchForce + angleVariation * transform.right);
 	}
 
 	/// <summary>Sets the cooldown for the next can to spawn. Speeds up linearly with game progression.</summary>
@@ -72,7 +73,7 @@ public class CanShootingRange : Minigame {
 			Vector2 mousePos = _mousePosition.ReadValue<Vector2>();
 			Ray aimRay = CameraManager.Instance.MainCamera.ScreenPointToRay(mousePos);
 			RaycastHit aimHit;
-			if (Physics.Raycast(aimRay, out aimHit)) {
+			if (Physics.Raycast(aimRay, out aimHit, Mathf.Infinity, LayerMask.GetMask("Can"))) {
 				Can hitCan = aimHit.collider.GetComponent<Can>();
 				if (hitCan) {
 					_hitChain++;
