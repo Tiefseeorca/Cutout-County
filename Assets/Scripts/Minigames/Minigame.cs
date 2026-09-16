@@ -16,6 +16,7 @@ public abstract class Minigame : MonoBehaviour {
     public void StartMinigame() {
         PlayerController.Instance.TakeAwayControl();
         CameraManager.Instance.SwitchTo(_camera);
+        Cursor.lockState = CursorLockMode.Confined;
         _active = true;
         _ingame = true;
         Score = 0;
@@ -28,6 +29,7 @@ public abstract class Minigame : MonoBehaviour {
     public void EndMinigame() {
         _active = false;
         _ingame = false;
+        Cursor.lockState = CursorLockMode.Locked;
         CameraManager.Instance.SwitchTo(CameraManager.Instance.PlayerCamera);
         PlayerController.Instance.GiveBackControl();
     }

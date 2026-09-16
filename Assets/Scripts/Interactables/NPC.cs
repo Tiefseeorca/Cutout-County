@@ -9,10 +9,10 @@ public class NPC : Interactable{
     private bool _inConversation;
     
     public override void TryInteract(){
-        if (_inConversation) return;
+        if (_inConversation || PlayerController.Instance.InInteraction) return;
 
         _inConversation = true;
-        blocksOtherInteractions = true;
+        PlayerController.Instance.InInteraction = true;
 
         if (_questSymbol != null){
             _questSymbol.SetActive(false);
