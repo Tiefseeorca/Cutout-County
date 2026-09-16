@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private float _springDamper;
     [SerializeField] private float _maxMass;
 
-    private bool _inInteraction;
+    public bool InInteraction;
     [SerializeField] private bool _grounded;
     [SerializeField] private bool _inJump;
     private float _mass;
@@ -23,8 +23,9 @@ public class PlayerController : MonoBehaviour {
     private InputAction _jumpAction;
     private Transform _cameraTransform;
     private POVCameraHelper _camera;
-
-    void Start() {
+    
+    void Awake() {
+        Cursor.lockState = CursorLockMode.Locked;
         Instance = this;
         _rb = GetComponent<Rigidbody>();
         _mass = _rb.mass;
@@ -35,7 +36,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     void FixedUpdate(){
-        if (!_inInteraction) {
+        if (!InInteraction) {
             Vector2 input = _walkAction.ReadValue<Vector2>();
             Vector3 moveDirection = _cameraTransform.forward * input.y + _cameraTransform.right * input.x;
             _rb.linearVelocity = new Vector3(moveDirection.x * speed, _rb.linearVelocity.y, moveDirection.z * speed);
@@ -66,7 +67,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void Update() {
-        if (_inInteraction) return;
+        if (InInteraction) return;
         bool jumpPressed = _jumpAction.WasPressedThisFrame();
         if (jumpPressed && _grounded){
             _rb.linearVelocity = new Vector3(_rb.linearVelocity.x, 0, _rb.linearVelocity.z);
@@ -78,12 +79,12 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void TakeAwayControl() {
-        _inInteraction = true;
+        InInteraction = true;
         _camera.Disable();
     }
 
     public void GiveBackControl() {
-        _inInteraction = false;
+        InInteraction = false;
         _camera.Enable();
     }
 }
