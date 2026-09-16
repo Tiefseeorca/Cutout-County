@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour {
     private POVCameraHelper _camera;
 
     void Start() {
+        Cursor.lockState = CursorLockMode.Locked;
         Instance = this;
         _rb = GetComponent<Rigidbody>();
         _mass = _rb.mass;
