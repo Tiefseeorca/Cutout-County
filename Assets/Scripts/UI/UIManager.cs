@@ -23,6 +23,7 @@ public class UIManager : MonoBehaviour {
     [SerializeField] private GameObject _minigameUI;
     [SerializeField] private TextMeshProUGUI _minigameScoreDisplay;
     private bool _isPaused = false;
+    private CursorLockMode _unpausedLockMode;
 
     private void Awake(){
         Instance = this;
@@ -103,7 +104,8 @@ public class UIManager : MonoBehaviour {
     
     // On Button / Key Press
 
-    public void Pause(){
+    public void Pause() {
+        _unpausedLockMode = Cursor.lockState;
         Cursor.lockState = CursorLockMode.None;
         _pauseScreen.SetActive(true);
         Time.timeScale = 0;
@@ -111,7 +113,7 @@ public class UIManager : MonoBehaviour {
     }
 
     public void Resume(){
-        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = _unpausedLockMode;
         _pauseScreen.SetActive(false);
         Time.timeScale = 1;
         _isPaused = false;
