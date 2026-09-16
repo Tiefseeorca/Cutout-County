@@ -23,8 +23,9 @@ public class PlayerController : MonoBehaviour {
     private InputAction _jumpAction;
     private Transform _cameraTransform;
     private POVCameraHelper _camera;
-
+    
     void Awake() {
+        Cursor.lockState = CursorLockMode.Locked;
         Instance = this;
         _rb = GetComponent<Rigidbody>();
         _mass = _rb.mass;

@@ -22,6 +22,7 @@ public class UIManager : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI _minigameHighscoreDisplay;
     [SerializeField] private GameObject _minigameUI;
     [SerializeField] private TextMeshProUGUI _minigameScoreDisplay;
+    private bool _isPaused = false;
 
     private void Awake(){
         Instance = this;
@@ -31,6 +32,17 @@ public class UIManager : MonoBehaviour {
         }
 
         _dialogueContinueAction = InputSystem.actions.FindAction("Jump");
+    }
+
+    private void Update(){
+        if (Keyboard.current.escapeKey.wasPressedThisFrame){
+            if (_isPaused == true){
+                Resume();
+            }
+            else{
+                Pause();
+            }
+        }
     }
 
     // In Gameplay
@@ -91,12 +103,18 @@ public class UIManager : MonoBehaviour {
     
     // On Button / Key Press
 
-    public void Pause() {
-        throw new NotImplementedException("TODO");
+    public void Pause(){
+        Cursor.lockState = CursorLockMode.None;
+        _pauseScreen.SetActive(true);
+        Time.timeScale = 0;
+        _isPaused = true;
     }
 
-    public void Resume() {
-        throw new NotImplementedException("TODO");
+    public void Resume(){
+        Cursor.lockState = CursorLockMode.Locked;
+        _pauseScreen.SetActive(false);
+        Time.timeScale = 1;
+        _isPaused = false;
     }
 
     public void OpenOptions() {
@@ -107,8 +125,9 @@ public class UIManager : MonoBehaviour {
         throw new NotImplementedException("TODO");
     }
 
-    public void BackToMenu() {
-        throw new NotImplementedException("TODO");
+    public void BackToMenu(){
+        Time.timeScale = 1f;
+        _loadScene("MainMenu");
     }
     
     // Main Menu
