@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Random = UnityEngine.Random;
 
 public class CanShootingRange : Minigame {
 	[SerializeField] private GameObject _canPrefab;
@@ -9,6 +11,7 @@ public class CanShootingRange : Minigame {
 	[SerializeField] private float _minCanCooldown;
 	[SerializeField] private float _gameDuration;
 	[SerializeField] private float _canLaunchForce;
+	[SerializeField] private float _spawnRadius;
 	private float _gameRuntime;
 	private float _cooldownTimer;
 	private InputAction _mousePosition;
@@ -18,6 +21,7 @@ public class CanShootingRange : Minigame {
 	private void Start() {
 		_shootAction = InputSystem.actions.FindAction("Attack");
 		_mousePosition = InputSystem.actions.FindAction("MousePosition");
+		Can.CanGotHit.AddListener(_increaseScore);
 		this.StartMinigame();
 	}
 
@@ -28,9 +32,11 @@ public class CanShootingRange : Minigame {
 	/// <summary>Spawns a can on a random position along the local x-axis with a random angle that keeps the can inside the game space.</summary>
 	private void _spawnCan() {
 		// TODO: include the randomness
-		GameObject canObject = Instantiate(_canPrefab, transform.position, Quaternion.identity);
+		float posVariation = Random.Range(-_spawnRadius, _spawnRadius);
+		float angleVariation = Random.Range(-_spawnRadius, _spawnRadius) - posVariation;
+		GameObject canObject = Instantiate(_canPrefab, transform.position + posVariation * transform.forward, Quaternion.identity);
 		Can can = canObject.GetComponent<Can>();
-		can.LaunchWithForce(Vector3.up * _canLaunchForce);
+		can.LaunchWithForce(Vector3.up * _canLaunchForce + angleVariation * transform.forward);
 	}
 
 	/// <summary>Sets the cooldown for the next can to spawn. Speeds up linearly with game progression.</summary>
@@ -43,12 +49,19 @@ public class CanShootingRange : Minigame {
 		_gameRuntime = 0;
 		_cooldownTimer = _startDelay;
 	}
+
+	private IEnumerator _executeEnddelay() {
+		_cooldownTimer = _endDelay + 1f;
+		_gameRuntime = -1000f;
+		yield return new WaitForSeconds(_endDelay);
+		_ingame = false;
+	}
+	
 	protected override void _executeGame() {
 		_cooldownTimer -= Time.deltaTime;
 		_gameRuntime += Time.deltaTime;
 		if (_gameRuntime >= _gameDuration) {
-			_ingame = false;
-			return;
+			StartCoroutine(_executeEnddelay());
 		}
 		if (_cooldownTimer < 0) {
 			_spawnCan();
@@ -63,7 +76,8 @@ public class CanShootingRange : Minigame {
 				Can hitCan = aimHit.collider.GetComponent<Can>();
 				if (hitCan) {
 					_hitChain++;
-					Destroy(Instantiate(_sparksPrefab, aimHit.point, Quaternion.identity), 1f);
+					Quaternion sparkRotation = Quaternion.FromToRotation(Vector3.forward, -aimRay.direction);
+					Destroy(Instantiate(_sparksPrefab, aimHit.point, sparkRotation), 1f);
 					hitCan.OnHit();
 				} else {
 					_hitChain = 0;
@@ -72,7 +86,8 @@ public class CanShootingRange : Minigame {
 		}
 	}
 	protected override void _finishOffGame() {
-		Debug.LogWarning("TODO: Implement score display of minigame");
-		EndMinigame();
+		// TODO: this method can be implemented in Minigame instead of being abstract
+		_active = false;
+		UIManager.Instance.DisplayMinigameEndscreen(this);
 	}
 }

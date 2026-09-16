@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
     public static UIManager Instance;
@@ -16,6 +17,9 @@ public class UIManager : MonoBehaviour {
     private DialogueHelper _dialogueHelper;
     private InputAction _dialogueContinueAction;
     [SerializeField] private TextMeshProUGUI _questsDisplay;
+    [SerializeField] private GameObject _minigameEndscreen;
+    [SerializeField] private TextMeshProUGUI _minigameScoreDisplay;
+    [SerializeField] private TextMeshProUGUI _minigameHighscoreDisplay;
 
     private void Awake(){
         Instance = this;
@@ -57,6 +61,19 @@ public class UIManager : MonoBehaviour {
         _dialogueHelper = null;
         _dialogueBox.SetActive(false);
         Dialogue.DialogueFinished.Invoke();
+    }
+    
+    private IEnumerator _hideMinigameEndscreenAfterSeconds(float t, Action closeFunction) {
+        yield return new WaitForSeconds(t);
+        closeFunction.Invoke();
+        _minigameEndscreen.SetActive(false);
+    }
+
+    public void DisplayMinigameEndscreen(Minigame minigame) {
+        _minigameEndscreen.SetActive(true);
+        _minigameScoreDisplay.text = minigame.Score.ToString();
+        _minigameHighscoreDisplay.text = minigame.Highscore.ToString();
+        StartCoroutine(_hideMinigameEndscreenAfterSeconds(Minigame.MinigameEndScreenDuration, minigame.EndMinigame));
     }
     
     // On Button / Key Press

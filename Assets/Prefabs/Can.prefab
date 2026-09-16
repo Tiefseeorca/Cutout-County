@@ -138,7 +138,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Can
   _spinSpeed: 6
-  _hitForce: 0.5
+  _hitForce: 0.75
+  _sparksParticles: {fileID: 0}
 --- !u!54 &5690139196568267000
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -185,7 +186,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.1
-  m_Height: 0.35
+  m_Radius: 0.125
+  m_Height: 0.4
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}

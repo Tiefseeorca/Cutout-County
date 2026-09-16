@@ -18,7 +18,7 @@ public class Can : MonoBehaviour {
 
     private void Awake() {
         _rb = GetComponent<Rigidbody>();
-        _torque = new Vector3(Random.value, Random.value, Random.value).normalized * _spinSpeed;
+        _torque = new Vector3(Random.value, 0, Random.value).normalized * _spinSpeed;
         _despawnHeight = transform.position.y;
     }
 
@@ -28,7 +28,7 @@ public class Can : MonoBehaviour {
         transform.rotation = Quaternion.identity;
         _rb.linearVelocity = Vector3.zero;
         _rb.angularVelocity = Vector3.zero;
-        _rb.mass = 1;
+        _rb.linearDamping = 0;
     }
 
     private void _applySpin() {
@@ -47,7 +47,7 @@ public class Can : MonoBehaviour {
 
     private void Update() {
         if (transform.position.y < _despawnHeight) _despawn();
-        else if (_rb.linearVelocity.y < 0) _rb.mass = 0.1f;
+        else _rb.linearDamping += Time.deltaTime * 1.5f;
     }
 
     private void _despawn() {

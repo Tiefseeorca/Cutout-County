@@ -3,12 +3,14 @@ using Unity.Cinemachine;
 using UnityEngine;
 
 public abstract class Minigame : MonoBehaviour {
+    public const float MinigameEndScreenDuration = 3f;
     [SerializeField] private CinemachineCamera _camera;
     protected bool _active;
     protected bool _ingame;
     public int Score { get; protected set; }
     public int Highscore { get; protected set; }
     [SerializeField] protected float _startDelay;
+    [SerializeField] protected float _endDelay;
 
     /// <summary>Call this to start a minigame. Takes away player control and changes the camera to the minigame camera.</summary>
     public void StartMinigame() {

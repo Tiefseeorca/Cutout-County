@@ -570,7 +570,7 @@ MonoBehaviour:
     DefaultMode: 2
   DefaultBlend:
     Style: 1
-    Time: 2
+    Time: 1
     CustomCurve:
       serializedVersion: 2
       m_Curve: []
@@ -2524,8 +2524,9 @@ MonoBehaviour:
   _sparksPrefab: {fileID: 7105337300004875766, guid: 881ab9407a2564b449d5c0afb9a65806, type: 3}
   _startCanCooldown: 2
   _minCanCooldown: 0.5
-  _gameDuration: 3
+  _gameDuration: 40
   _canLaunchForce: 5.5
+  _spawnRadius: 1
 --- !u!4 &2044195616
 Transform:
   m_ObjectHideFlags: 0
