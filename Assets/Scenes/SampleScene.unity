@@ -1011,7 +1011,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.15
   far clip plane: 1000
   field of view: 60.000004
   orthographic: 0
@@ -4353,10 +4353,6 @@ PrefabInstance:
     - target: {fileID: 2818979977025419964, guid: 9dc7321adb37fa34da6e0af0686c1665, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 6549906956966262069, guid: 9dc7321adb37fa34da6e0af0686c1665, type: 3}
-      propertyPath: Priority.m_Value
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

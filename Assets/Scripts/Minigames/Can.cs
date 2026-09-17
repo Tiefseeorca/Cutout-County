@@ -10,7 +10,6 @@ public class Can : MonoBehaviour {
     private int _timesHit = 0;
     [SerializeField] private float _spinSpeed;
     [SerializeField] private float _hitForce;
-    [SerializeField] private GameObject _sparksParticles;
     private Rigidbody _rb;
     private Vector3 _torque;
     private float _despawnHeight;
@@ -38,6 +37,7 @@ public class Can : MonoBehaviour {
     public void OnHit() {
         _timesHit++;
         CanGotHit.Invoke(_timesHit);
+        _rb.AddForce(Vector3.down * _hitForce, ForceMode.Impulse);
         _applySpin();
     }
 
