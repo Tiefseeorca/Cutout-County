@@ -47,7 +47,7 @@ public class Can : MonoBehaviour {
 
     private void Update() {
         if (transform.position.y < _despawnHeight) _despawn();
-        else _rb.linearDamping += Time.deltaTime * 4;
+        else _rb.linearDamping += Time.deltaTime * 3.5f;
     }
 
     private void _despawn() {

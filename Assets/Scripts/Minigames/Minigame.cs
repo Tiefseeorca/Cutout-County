@@ -11,6 +11,8 @@ public abstract class Minigame : MonoBehaviour {
     public int Highscore { get; protected set; }
     [SerializeField] protected float _startDelay;
     [SerializeField] protected float _endDelay;
+    [SerializeField] private int[] _scoreHurdles;
+    [SerializeField] private string _scoreFlagsPrefix;
 
     /// <summary>Call this to start a minigame. Takes away player control and changes the camera to the minigame camera.</summary>
     public void StartMinigame() {
@@ -29,6 +31,9 @@ public abstract class Minigame : MonoBehaviour {
     public void EndMinigame() {
         _active = false;
         _ingame = false;
+        foreach (int scoreHurdle in _scoreHurdles) {
+            if(Score > scoreHurdle) GameManager.Instance.SetFlagValue(_scoreFlagsPrefix + scoreHurdle, true);
+        }
         Cursor.lockState = CursorLockMode.Locked;
         CameraManager.Instance.SwitchTo(CameraManager.Instance.PlayerCamera);
         PlayerController.Instance.GiveBackControl();

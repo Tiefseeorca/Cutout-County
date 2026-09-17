@@ -57,12 +57,14 @@ public class PlayerController : MonoBehaviour {
                 }
 
                 _rb.linearVelocity = new Vector3(movement.x, _rb.linearVelocity.y, movement.z);
-            } else {
+            }
+            else {
                 Vector2 movement = new(_rb.linearVelocity.x, _rb.linearVelocity.z);
                 movement = movement / (1 + _deceleration * Time.fixedDeltaTime);
                 _rb.linearVelocity = new(movement.x, _rb.linearVelocity.y, movement.y);
             }
         }
+        else _rb.linearVelocity = Vector3.zero;
         RaycastHit hit;
         _grounded = Physics.SphereCast(transform.position, 0.3f, Vector3.down, out hit, _distanceToGround) && !_inJump;
         if (_grounded) {
