@@ -7,6 +7,9 @@ using UnityEngine.Serialization;
 public class PlayerController : MonoBehaviour {
     public static PlayerController Instance;
     public float speed;
+    [SerializeField] private float _acceleration;
+    [SerializeField] private float _maxSpeed;
+    [SerializeField] private float _deceleration;
     public float jumpForce;
     [SerializeField] private float _distanceToGround;
     [SerializeField] private float _springStrength;
@@ -35,15 +38,46 @@ public class PlayerController : MonoBehaviour {
         _camera = _cameraTransform.GetComponent<POVCameraHelper>();
     }
 
-    void FixedUpdate(){
-        if (!InInteraction) {
+    void FixedUpdate() {
+        /*if (!InInteraction) {
             Vector2 input = _walkAction.ReadValue<Vector2>();
             Vector3 moveDirection = _cameraTransform.forward * input.y + _cameraTransform.right * input.x;
             _rb.linearVelocity = new Vector3(moveDirection.x * speed, _rb.linearVelocity.y, moveDirection.z * speed);
+        }*/
+        if (!InInteraction) {
+            if (_walkAction.IsPressed()) {
+                Vector2 input = _walkAction.ReadValue<Vector2>();
+                Vector3 moveDirection = _cameraTransform.forward * input.y + _cameraTransform.right * input.x;
+                moveDirection.y = 0;
+                _rb.AddForce(moveDirection.normalized * (_acceleration * Time.fixedDeltaTime), ForceMode.Force);
+                Vector3 movement = _rb.linearVelocity;
+                movement.y = 0;
+                if (movement.sqrMagnitude > _maxSpeed * _maxSpeed) {
+                    movement = movement.normalized * _maxSpeed;
+                }
+
+                _rb.linearVelocity = new Vector3(movement.x, _rb.linearVelocity.y, movement.z);
+            }
+            else {
+                Vector2 movement = new(_rb.linearVelocity.x, _rb.linearVelocity.z);
+                movement = movement / (1 + _deceleration * Time.fixedDeltaTime);
+                _rb.linearVelocity = new(movement.x, _rb.linearVelocity.y, movement.y);
+            }
         }
+        else _rb.linearVelocity = Vector3.zero;
         RaycastHit hit;
-        _grounded = Physics.Raycast(transform.position, Vector3.down, out hit, _distanceToGround) && !_inJump;
+        _grounded = Physics.SphereCast(transform.position, 0.3f, Vector3.down, out hit, _distanceToGround) && !_inJump;
         if (_grounded) {
+            // detect if you're on a slope too steep to walk on
+            float angle = Vector3.Angle(Vector3.up, hit.normal);
+            if (angle > 60) {
+                _grounded = false;
+                Vector3 normal = hit.normal;
+                normal.y = -normal.y;
+                _rb.AddForce(normal * (_acceleration *  Time.fixedDeltaTime * (1 - angle/180)), ForceMode.Force);
+                return;
+            }
+            
             _rb.mass = _mass;
             float relativeVeloctiy = Vector3.Dot(Vector3.down, _rb.linearVelocity);
             float x = hit.distance - _distanceToGround;

@@ -49,6 +49,7 @@ public class CanShootingRange : Minigame {
 	protected override void _resetGame() {
 		_gameRuntime = 0;
 		_cooldownTimer = _startDelay;
+		_hitChain = 0;
 	}
 
 	private IEnumerator _executeEnddelay() {
@@ -80,9 +81,9 @@ public class CanShootingRange : Minigame {
 					Quaternion sparkRotation = Quaternion.FromToRotation(Vector3.forward, -aimRay.direction);
 					Destroy(Instantiate(_sparksPrefab, aimHit.point, sparkRotation), 1f);
 					hitCan.OnHit();
-				} else {
-					_hitChain = 0;
-				}
+				} 
+			} else {
+				_hitChain = 0;
 			}
 		}
 	}
