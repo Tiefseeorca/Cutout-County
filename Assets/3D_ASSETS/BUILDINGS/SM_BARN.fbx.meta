@@ -3,12 +3,7 @@ guid: bce36d62a04ab1542a9a0f0312bebf47
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: TM_BARN
-    second: {fileID: 2100000, guid: fae584b0909e9ee42a4b7ba090a71e35, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
