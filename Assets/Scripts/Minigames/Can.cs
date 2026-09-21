@@ -19,6 +19,8 @@ public class Can : MonoBehaviour {
         _rb = GetComponent<Rigidbody>();
         _torque = new Vector3(Random.value, 0, Random.value).normalized * _spinSpeed;
         _despawnHeight = transform.position.y;
+        transform.Rotate(transform.forward, Random.Range(-10f, 10f));
+        transform.Rotate(0, Random.Range(-100, 100), Random.Range(-10f, 10f));
     }
 
     /// <summary>Resets the can back to standard values and rotation for the use in ObjectPooling.</summary>

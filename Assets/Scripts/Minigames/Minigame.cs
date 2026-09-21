@@ -35,6 +35,7 @@ public abstract class Minigame : MonoBehaviour {
             if(Score > scoreHurdle) GameManager.Instance.SetFlagValue(_scoreFlagsPrefix + scoreHurdle, true);
         }
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         CameraManager.Instance.SwitchTo(CameraManager.Instance.PlayerCamera);
         PlayerController.Instance.GiveBackControl();
     }
