@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,6 +7,7 @@ public abstract class Interactable : MonoBehaviour {
     [SerializeField] protected InputAction _interactAction;
     public bool blocksOtherInteractions;
     [SerializeField] private MeshRenderer _outlineModel;
+    [SerializeField] private Flag[] _flagsToDeactivate;
 
     private void OnEnable(){
         _interactAction.Enable();
@@ -13,6 +15,19 @@ public abstract class Interactable : MonoBehaviour {
 
     private void OnDisable(){
         _interactAction.Disable();
+    }
+
+    private void Awake() {
+        GameFlags.FlagChanged.AddListener(_checkFlags);
+    }
+
+    private void _checkFlags(Flag changedFlag) {
+        if (_flagsToDeactivate.Length == 0) return;
+        foreach (Flag flag in _flagsToDeactivate) {
+            if (GameManager.Instance.GetFlagValue(flag.Id) != flag.Value) return;
+        }
+        GameFlags.FlagChanged.RemoveListener(_checkFlags);
+        gameObject.SetActive(false);
     }
 
     private void _showOutline() {

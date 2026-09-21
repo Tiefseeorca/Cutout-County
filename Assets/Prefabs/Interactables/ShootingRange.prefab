@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b5dc18696f46a04aa85fdea297f7a9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MinigameInteractable
-  _interactionRange: 3
+  _interactionRange: 4
   _interactAction:
     m_Name: Interact
     m_Type: 0
@@ -144,6 +144,7 @@ MonoBehaviour:
     m_Flags: 0
   blocksOtherInteractions: 1
   _outlineModel: {fileID: 8796607222360800080}
+  _flagsToDeactivate: []
   _minigame: {fileID: 1722491461808484718}
 --- !u!65 &7657711834696384643
 BoxCollider:
@@ -222,6 +223,8 @@ MonoBehaviour:
   _gameDuration: 40
   _canLaunchForce: 5
   _spawnRadius: 0.75
+  _cursorTexture: {fileID: 2800000, guid: 7cfbf67eced5295419fd9a11ad537399, type: 3}
+  _cursorHotspot: {x: 0.5, y: 0.5}
 --- !u!1001 &6151182347954376524
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -360,6 +363,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f16f5d1ed0bd09f41afece546cd537d0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f16f5d1ed0bd09f41afece546cd537d0, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: f16f5d1ed0bd09f41afece546cd537d0, type: 3}

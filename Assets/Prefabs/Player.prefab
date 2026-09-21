@@ -232,15 +232,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80c377d1d66e306458a79bcf737e15f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  speed: 5
+  speed: 6
   _acceleration: 128000
   _maxSpeed: 5.2
-  _deceleration: 8
+  _deceleration: 10
   jumpForce: 320
   _distanceToGround: 1.05
   _springStrength: 4800
   _springDamper: 800
-  _maxMass: 600
+  _maxGrav: -19.62
   InInteraction: 0
   _grounded: 0
   _inJump: 0

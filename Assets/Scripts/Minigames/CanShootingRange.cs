@@ -12,6 +12,8 @@ public class CanShootingRange : Minigame {
 	[SerializeField] private float _gameDuration;
 	[SerializeField] private float _canLaunchForce;
 	[SerializeField] private float _spawnRadius;
+	[SerializeField] private Texture2D _cursorTexture;
+	[SerializeField] private Vector2 _cursorHotspot;
 	private float _gameRuntime;
 	private float _cooldownTimer;
 	private InputAction _mousePosition;
@@ -50,6 +52,8 @@ public class CanShootingRange : Minigame {
 		_gameRuntime = 0;
 		_cooldownTimer = _startDelay;
 		_hitChain = 0;
+		Vector2 newCursorHotspot = new Vector2(_cursorTexture.width * _cursorHotspot.x, _cursorTexture.height * _cursorHotspot.y);
+		Cursor.SetCursor(_cursorTexture, newCursorHotspot, CursorMode.Auto);
 	}
 
 	private IEnumerator _executeEnddelay() {

@@ -14,12 +14,12 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private float _distanceToGround;
     [SerializeField] private float _springStrength;
     [SerializeField] private float _springDamper;
-    [SerializeField] private float _maxMass;
+    [SerializeField] private float _maxGrav;
 
     public bool InInteraction;
     [SerializeField] private bool _grounded;
     [SerializeField] private bool _inJump;
-    private float _mass;
+    private float _standardGravity;
     
     private Rigidbody _rb;
     private InputAction _walkAction;
@@ -31,11 +31,11 @@ public class PlayerController : MonoBehaviour {
         Cursor.lockState = CursorLockMode.Locked;
         Instance = this;
         _rb = GetComponent<Rigidbody>();
-        _mass = _rb.mass;
         _walkAction = InputSystem.actions.FindAction("Move");
         _jumpAction = InputSystem.actions.FindAction("Jump");
         _cameraTransform = transform.GetChild(0).GetChild(0);
         _camera = _cameraTransform.GetComponent<POVCameraHelper>();
+        _standardGravity = Physics.gravity.y;
     }
 
     void FixedUpdate() {
@@ -49,7 +49,8 @@ public class PlayerController : MonoBehaviour {
                 Vector2 input = _walkAction.ReadValue<Vector2>();
                 Vector3 moveDirection = _cameraTransform.forward * input.y + _cameraTransform.right * input.x;
                 moveDirection.y = 0;
-                _rb.AddForce(moveDirection.normalized * (_acceleration * Time.fixedDeltaTime), ForceMode.Force);
+                float effectiveAccel = _grounded ? _acceleration : _acceleration / 2;
+                _rb.AddForce(moveDirection.normalized * (effectiveAccel * Time.fixedDeltaTime), ForceMode.Force);
                 Vector3 movement = _rb.linearVelocity;
                 movement.y = 0;
                 if (movement.sqrMagnitude > _maxSpeed * _maxSpeed) {
@@ -77,24 +78,22 @@ public class PlayerController : MonoBehaviour {
                 _rb.AddForce(normal * (_acceleration *  Time.fixedDeltaTime * (1 - angle/180)), ForceMode.Force);
                 return;
             }
-            
-            _rb.mass = _mass;
+            Physics.gravity = Vector3.up * _standardGravity;
             float relativeVeloctiy = Vector3.Dot(Vector3.down, _rb.linearVelocity);
             float x = hit.distance - _distanceToGround;
             float springForce = (x * _springStrength) - (relativeVeloctiy * _springDamper);
             _rb.AddForce(Vector3.down * springForce);
-            //_rb.AddForce(Vector3.up * (_springStrength * 1f / Mathf.Max(hit.distance * _springSoftness, 0.01f)));
         } else if (_rb.linearVelocity.y < 0) {
             //_rb.mass = _mass * 2;
         }
     }
 
     private IEnumerator _increaseGravityInJump() {
-        for (float t = 1; true; t += Time.deltaTime * 3) {
+        for (float t = 2; true; t += Time.deltaTime) {
             if (_grounded) break;
-            float newMass = _mass * t * t;
-            if (newMass > _maxMass) newMass = _maxMass;
-            _rb.mass = newMass;
+            float newGrav = -t * t * t;
+            if (newGrav < _maxGrav) newGrav = _maxGrav;
+            Physics.gravity = Vector3.up * newGrav;
             if (_rb.linearVelocity.y < 0) _inJump = false;
             yield return null;
         }
