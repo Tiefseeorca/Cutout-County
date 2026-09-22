@@ -3,7 +3,27 @@ guid: 94d6547a265d51544b46792266d73f1a
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TM_SHERIFF.001
+    second: {fileID: 2100000, guid: 1289b28c0b94d5845a634797add1c1ab, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_SHERIFF_WOOD_WALL.001
+    second: {fileID: 2100000, guid: 594ea1b3ccedbba43ab3207d8e046b4f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_TYPING_SHERIFF.001
+    second: {fileID: 2100000, guid: e3b1da8822fd3684a9bcedbedcb64650, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_TYPING_WANTED.001
+    second: {fileID: 2100000, guid: 95f4022dacece9b41bb19a3a807f5db1, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

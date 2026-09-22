@@ -3,7 +3,12 @@ guid: ea94a61045423a04f90df56900c4a768
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_BOX_DECKEL
+    second: {fileID: 2100000, guid: 2d24f77f6611ac84b92ed503c1fb4a1b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -22,7 +22,7 @@ public abstract class Interactable : MonoBehaviour {
     }
 
     private void _checkFlags(Flag changedFlag) {
-        if (_flagsToDeactivate.Length == 0) return;
+        if (_flagsToDeactivate != null && _flagsToDeactivate.Length == 0) return;
         foreach (Flag flag in _flagsToDeactivate) {
             if (GameManager.Instance.GetFlagValue(flag.Id) != flag.Value) return;
         }
@@ -59,7 +59,7 @@ public abstract class Interactable : MonoBehaviour {
 
         Ray castRay = new Ray(mainCam.transform.position, mainCam.transform.forward);
         RaycastHit hit;
-        if (Physics.Raycast(castRay, out hit, _interactionRange)){
+        if (Physics.Raycast(castRay, out hit, _interactionRange, LayerMask.GetMask("Interactables"))) {
             return hit.transform == transform;
         }
         return false;

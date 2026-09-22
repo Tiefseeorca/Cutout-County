@@ -3,7 +3,12 @@ guid: 8335b36929ecaa24fa76e75cb39c62af
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_MINE_STONE_SMALL_02
+    second: {fileID: 2100000, guid: dca4242de25ec3547b8b7a84dc636f76, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

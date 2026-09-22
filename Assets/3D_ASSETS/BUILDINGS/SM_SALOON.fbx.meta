@@ -3,7 +3,27 @@ guid: 3f95b239463bf1c4a9d5313b13d81d90
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TM_BANK.002
+    second: {fileID: 2100000, guid: a6c86b5499a04824788e31e3527c56a6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TM_SALOON.001
+    second: {fileID: 2100000, guid: 0a602773223921543b3448d4ba2ecb41, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_SALOON_WOOD_WALL.001
+    second: {fileID: 2100000, guid: a81fe8cfed766cb44b6198523eb951a9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_TYPING_SALOON.001
+    second: {fileID: 2100000, guid: c4627dfe76ada6a40bf555f25eb7a2a4, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
