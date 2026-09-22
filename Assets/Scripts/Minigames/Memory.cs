@@ -44,7 +44,16 @@ public class Memory : Minigame{
             _timeLeft = _gameDuration;
             return;
         }
-        
+
+        if (Input.GetMouseButtonDown(0)){
+            Ray cardRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(cardRay, out RaycastHit hit)){
+                MemoryCard card = hit.collider.GetComponent<MemoryCard>();
+                if (card != null){
+                    card.Flip();
+                }
+            }
+        }
     }
 
     protected override void _finishOffGame(){
