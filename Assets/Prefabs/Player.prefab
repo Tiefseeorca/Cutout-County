@@ -237,7 +237,7 @@ MonoBehaviour:
   _maxSpeed: 5.2
   _deceleration: 10
   jumpForce: 320
-  _distanceToGround: 1.05
+  _distanceToGround: 0.85
   _springStrength: 4800
   _springDamper: 800
   _maxGrav: -19.62
@@ -290,8 +290,8 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.35
-  m_Height: 1.2
+  m_Radius: 0.3
+  m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5194140351293365520
