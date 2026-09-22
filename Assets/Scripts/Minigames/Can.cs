@@ -10,7 +10,6 @@ public class Can : MonoBehaviour {
     private int _timesHit = 0;
     [SerializeField] private float _spinSpeed;
     [SerializeField] private float _hitForce;
-    [SerializeField] private GameObject _sparksParticles;
     private Rigidbody _rb;
     private Vector3 _torque;
     private float _despawnHeight;
@@ -20,6 +19,8 @@ public class Can : MonoBehaviour {
         _rb = GetComponent<Rigidbody>();
         _torque = new Vector3(Random.value, 0, Random.value).normalized * _spinSpeed;
         _despawnHeight = transform.position.y;
+        transform.Rotate(transform.forward, Random.Range(-10f, 10f));
+        transform.Rotate(0, Random.Range(-100, 100), Random.Range(-10f, 10f));
     }
 
     /// <summary>Resets the can back to standard values and rotation for the use in ObjectPooling.</summary>
@@ -38,6 +39,7 @@ public class Can : MonoBehaviour {
     public void OnHit() {
         _timesHit++;
         CanGotHit.Invoke(_timesHit);
+        _rb.AddForce(Vector3.down * _hitForce, ForceMode.Impulse);
         _applySpin();
     }
 
@@ -47,7 +49,7 @@ public class Can : MonoBehaviour {
 
     private void Update() {
         if (transform.position.y < _despawnHeight) _despawn();
-        else _rb.linearDamping += Time.deltaTime * 4;
+        else _rb.linearDamping += Time.deltaTime * 3.5f;
     }
 
     private void _despawn() {

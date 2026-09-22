@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineCamera
   Priority:
     Enabled: 1
-    m_Value: 1
+    m_Value: 2
   OutputChannel: 1
   StandbyUpdate: 2
   m_StreamingVersion: 20241001
@@ -62,7 +62,7 @@ MonoBehaviour:
   Lens:
     FieldOfView: 60.000004
     OrthographicSize: 5
-    NearClipPlane: 0.3
+    NearClipPlane: 0.15
     FarClipPlane: 1000
     Dutch: 0
     ModeOverride: 0
@@ -232,12 +232,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80c377d1d66e306458a79bcf737e15f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  speed: 4
+  speed: 6
+  _acceleration: 128000
+  _maxSpeed: 5.2
+  _deceleration: 10
   jumpForce: 320
-  _distanceToGround: 1.5
+  _distanceToGround: 1.05
   _springStrength: 4800
   _springDamper: 800
-  _maxMass: 600
+  _maxGrav: -19.62
+  InInteraction: 0
   _grounded: 0
   _inJump: 0
 --- !u!54 &3155608127299307348
@@ -274,20 +278,20 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2818979977025419964}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 8d626a47ed5d5fe438315bb8fae7abff, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.45
-  m_Height: 1.25
+  m_Radius: 0.35
+  m_Height: 1.2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5194140351293365520
