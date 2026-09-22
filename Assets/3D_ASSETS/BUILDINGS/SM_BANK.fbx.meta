@@ -3,7 +3,17 @@ guid: 04cb7d139e5358a419ce96f8ed64d150
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TM_BANK.001
+    second: {fileID: 2100000, guid: a6c86b5499a04824788e31e3527c56a6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_BANK_BRICK_WALL.001
+    second: {fileID: 2100000, guid: 5bce5bf2506bec546a8898ac3aff0003, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

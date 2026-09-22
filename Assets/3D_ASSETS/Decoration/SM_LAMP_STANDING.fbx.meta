@@ -3,7 +3,12 @@ guid: 3cd836fff02dc0844b73c089caef1d78
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_LAMP_STANDING_OFF
+    second: {fileID: 2100000, guid: 781ba5b2477086943baf55ad6d383df9, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

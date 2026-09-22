@@ -3,7 +3,12 @@ guid: 3093a89723e5c044b9d83ab74e43e379
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TM_WOODEN_BEAMS_AND_PLANKS.001
+    second: {fileID: 2100000, guid: 34679789681c63941b5d0311ceb5c59b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
