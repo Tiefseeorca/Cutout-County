@@ -3,7 +3,22 @@ guid: 53d8a55d68d156a4ba877903308e8371
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TM_PHARMACY.001
+    second: {fileID: 2100000, guid: 9b7171200a0164741800f8e5123b2eea, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_PHARMACY_WOOD_WALL_GREEN.001
+    second: {fileID: 2100000, guid: b7049ca5e55f9e945a81e2d1fa20282b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_TYPING_PHARMACY.001
+    second: {fileID: 2100000, guid: 90a36b5751c2f46489218ef4573aeadf, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

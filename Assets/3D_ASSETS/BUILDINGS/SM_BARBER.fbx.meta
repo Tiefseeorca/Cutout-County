@@ -3,7 +3,22 @@ guid: 20a62a5d17ea56a4d9f7f17d7dd70bc3
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TM_BARBER.003
+    second: {fileID: 2100000, guid: 9287d0e1a4f4d4245b1bcdd2ab1a5834, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_BARBER_WALL_BLUE.001
+    second: {fileID: 2100000, guid: 4849a8624d045f54abb19001d46062e7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_TYPING_BARBER.001
+    second: {fileID: 2100000, guid: 1a6d3530b9ad77f46a2fbc01dc15485d, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
