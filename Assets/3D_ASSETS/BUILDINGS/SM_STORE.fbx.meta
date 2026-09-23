@@ -3,7 +3,22 @@ guid: 90e90e8d5095cb848a11fbed8f42840c
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TM_STORE.001
+    second: {fileID: 2100000, guid: 5385185ddfb74b44382b3aeae6fbcdb9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_STORE_WALL.001
+    second: {fileID: 2100000, guid: f12871fd9654c40469a02f70398f9901, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_TYPING_STORE.001
+    second: {fileID: 2100000, guid: 7664330ef5bd17f47936f620a1bf19a1, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

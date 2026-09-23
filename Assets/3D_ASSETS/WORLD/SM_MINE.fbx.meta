@@ -3,7 +3,42 @@ guid: 8979b5e8ff5a775459189d5649ff832b
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TM_MINE
+    second: {fileID: 2100000, guid: e70e9b43c20291646b6ebd5c3bd7e028, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_MINECART
+    second: {fileID: 2100000, guid: 802dc55f783bcca48b5c0dcb0d20ab43, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_MINE_ENTANCE
+    second: {fileID: 2100000, guid: a953276c87f7cfe4bb00e07bb42178e3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_MINE_STONE_SMALL_01
+    second: {fileID: 2100000, guid: d07f51e062fe4634397148301429ff9c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_MINE_STONE_SMALL_02
+    second: {fileID: 2100000, guid: dca4242de25ec3547b8b7a84dc636f76, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_RAILS
+    second: {fileID: 2100000, guid: b59d87efdf999d942805603b7c16fc60, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_STONE_SMALL_01_GOLD_VERSION
+    second: {fileID: 2100000, guid: ea89fb5ff1012964d849fea6030149a1, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

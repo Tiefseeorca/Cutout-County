@@ -3,7 +3,12 @@ guid: 26653b7c9be3e80498ab3cb49fead3fc
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_CACTUS
+    second: {fileID: 2100000, guid: 4132108bce06dc84f803dc4f6f7521bd, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
