@@ -135,7 +135,7 @@ public class UIManager : MonoBehaviour {
     // Main Menu
     
     public void StartGame(){
-        _loadScene("LEVEL");
+        _loadScene("SampleScene");
     }
     
     public void QuitGame(){
