@@ -3,7 +3,10 @@ using UnityEngine.InputSystem;
 
 public class Memory : Minigame{
     [SerializeField] private float _gameDuration = 60f;
-    [SerializeField] private MemoryCard[] _cards;
+    [SerializeField] private Transform[] _sockets;
+    [SerializeField] private GameObject[] _cardPrefabs;
+    
+    private MemoryCard[] _activeCards = new MemoryCard[16];
     private InputAction _mouseClick;
     private InputAction _mousePosition;
     private float _timeLeft;
@@ -11,6 +14,10 @@ public class Memory : Minigame{
     private void Start(){
         _mouseClick = InputSystem.actions.FindAction("Attack");
         _mousePosition = InputSystem.actions.FindAction("MousePosition");
+
+        foreach (Transform socket in _sockets){
+           // socket.gameObject.GetComponent<MeshRenderer>().enabled = false;
+        }
     }
     
     protected override void _resetGame(){
@@ -20,8 +27,8 @@ public class Memory : Minigame{
 
     private void _setupAndShuffleCards(){
         int[] cardsIDs = new int[16];
-        // paare eintragen
         int index = 0;
+        // paare eintragen
         for (int i = 0; i < 8; i++){
             cardsIDs[index] = i;
             index++;
@@ -31,15 +38,25 @@ public class Memory : Minigame{
         // Shuffle
         for (int i = 0; i < cardsIDs.Length; i++){
             int temp = cardsIDs[i];
-            int randomIndex = Random.Range(i, _cards.Length);
+            int randomIndex = Random.Range(i, cardsIDs.Length);
             cardsIDs[i] = cardsIDs[randomIndex];
             cardsIDs[randomIndex] = temp;
         }
         // gemischte IDs zuweisen
-        for (int i = 0; i < _cards.Length; i++){
-            if (_cards[i] != null){
-                _cards[i].SetupCard(cardsIDs[i]);
+        for (int i = 0; i < _activeCards.Length; i++){
+            if (_activeCards[i] != null){ 
+                Destroy(_activeCards[i].gameObject);
             }
+        }
+
+        for (int i = 0; i < _sockets.Length; i++){
+            int prefabID = cardsIDs[i];
+            Quaternion flatRotation = _sockets[i].rotation * Quaternion.Euler(90f, 180f, 0f);
+        
+            GameObject spawnedCard = Instantiate(_cardPrefabs[prefabID], _sockets[i].position, flatRotation);
+            spawnedCard.transform.SetParent(this.transform); 
+        
+            _activeCards[i] = spawnedCard.GetComponent<MemoryCard>();
         }
     }
 
