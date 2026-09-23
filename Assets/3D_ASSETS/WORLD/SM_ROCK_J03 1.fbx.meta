@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: 073dc180f0ceb6c4ab9b5e77527ae07e
+guid: ede331f2635995648a7a78666c1d8ad5
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_ROCK_J03.001
+    second: {fileID: 2100000, guid: af7433dd5192a6f40af79c5bc0740eca, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
