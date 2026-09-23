@@ -253,6 +253,8 @@ MonoBehaviour:
   _spawnRadius: 0.75
   _cursorTexture: {fileID: 2800000, guid: 7cfbf67eced5295419fd9a11ad537399, type: 3}
   _cursorHotspot: {x: 0.5, y: 0.5}
+  _shootingSound: 3
+  _canHitSound: 4
 --- !u!1001 &5405144354828396430
 PrefabInstance:
   m_ObjectHideFlags: 0

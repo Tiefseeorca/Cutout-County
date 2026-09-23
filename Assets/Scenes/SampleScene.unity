@@ -1156,6 +1156,14 @@ MonoBehaviour:
   _sfxItems:
   - Id: 0
     Clip: {fileID: 8300000, guid: f842e00525e9bf145a63f37895a71626, type: 3}
+  - Id: 1
+    Clip: {fileID: 8300000, guid: a04cb3a858d63ca4eb50fced5145d082, type: 3}
+  - Id: 2
+    Clip: {fileID: 8300000, guid: 9a8f96f20226bc949b77752a2d54800f, type: 3}
+  - Id: 3
+    Clip: {fileID: 8300000, guid: 7aa7a95ba26f0f642a849814dde489e9, type: 3}
+  - Id: 4
+    Clip: {fileID: 8300000, guid: 96c0aebe73316ae4d93fecbdf3531e0c, type: 3}
 --- !u!4 &1765590038
 Transform:
   m_ObjectHideFlags: 0

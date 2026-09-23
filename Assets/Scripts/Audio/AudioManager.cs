@@ -33,25 +33,25 @@ public class AudioManager : MonoBehaviour {
         throw new NotImplementedException("There is no music in the game to be played :(");
     }
 
-    public void PlaySfx(AudioIDs audioId) {
+    public void PlaySfx(AudioIDs audioId, float pitch = 1f, float pitchVary = 0.2f) {
         AudioSource source = Instantiate(_sfxSource);
         AudioClip clip;
         if (_sfxClips.TryGetValue(audioId, out clip)) {
             source.clip = clip;
-            source.pitch = Random.Range(0.8f, 1.2f);
+            source.pitch = Random.Range(pitch - pitchVary, pitchVary + pitchVary);
             source.Play();
             float clipLength = clip.length;
             Destroy(source.gameObject, clipLength);
         }
     }
 
-    public void PlaySfx(AudioIDs audioId, Transform transform, float volume) {
+    public void PlaySfx(AudioIDs audioId, Transform transform, float volume = 1, float pitch = 1, float pitchVary = 0.2f) {
         AudioSource source = Instantiate(_sfxSource, transform.position, Quaternion.identity);
         AudioClip clip;
         if (_sfxClips.TryGetValue(audioId, out clip)) {
             source.clip = clip;
             source.volume = volume;
-            source.pitch = Random.Range(0.8f, 1.2f);
+            source.pitch = Random.Range(pitch - pitchVary, pitchVary + pitchVary);
             source.Play();
             float clipLength = clip.length;
             Destroy(source.gameObject, clipLength);
