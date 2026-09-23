@@ -1,12 +1,18 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Memory : Minigame{
     [SerializeField] private float _gameDuration = 60f;
     [SerializeField] private MemoryCard[] _cards;
-    
+    private InputAction _mouseClick;
+    private InputAction _mousePosition;
     private float _timeLeft;
-    
 
+    private void Start(){
+        _mouseClick = InputSystem.actions.FindAction("Attack");
+        _mousePosition = InputSystem.actions.FindAction("MousePosition");
+    }
+    
     protected override void _resetGame(){
         _timeLeft = _gameDuration;
         _setupAndShuffleCards();
@@ -44,7 +50,18 @@ public class Memory : Minigame{
             _timeLeft = _gameDuration;
             return;
         }
-        
+
+        if (_mouseClick.WasPressedThisFrame()){
+            Vector2 mousePos = Mouse.current.position.ReadValue();
+            Ray cardRay = CameraManager.Instance.MainCamera.ScreenPointToRay(mousePos);
+            if (Physics.Raycast(cardRay, out RaycastHit hit)){
+                MemoryCard card = hit.collider.GetComponent<MemoryCard>();
+                if (card != null){
+                    Debug.Log("Erfolgreich geklickt auf: " + hit.collider.gameObject.name);
+                    card.Flip();
+                }
+            }
+        }
     }
 
     protected override void _finishOffGame(){
