@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Random = UnityEngine.Random;
 
+// Author: Timo Lauterbach
 public class CanShootingRange : Minigame {
 	[SerializeField] private GameObject _canPrefab;
 	[SerializeField] private GameObject _sparksPrefab;
