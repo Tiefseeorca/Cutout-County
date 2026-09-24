@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 716fcb3d0b94a9b428eac471dc2fcd39, type: 3}
+  m_Name: CoinQuest
+  m_EditorClassIdentifier: Assembly-CSharp::Quest
+  Id: CoinQuest
+  _active: 0
+  _completed: 0
+  _text: "Sammle die gestohlenen M\xFCnzen!"
+  FlagsToActivate:
+  - Id: CoinQuestActivation
+    Value: 1
+  FlagsToComplete:
+  - Id: coin_0_FelsenParkour
+    Value: 1
+  - Id: coin_1_Saloon
+    Value: 1
+  - Id: coin_2_Mine1
+    Value: 1
+  - Id: coin_3_Mine2
+    Value: 1
+  - Id: coin_4_PharmacyBox
+    Value: 1
+  - Id: coin_5_LuzzStatue
+    Value: 1
+  - Id: coin_6_Scheune
+    Value: 1
+  - Id: "coin_8_Dosenschie\xDFen500"
+    Value: 1
+  - Id: "coin_9_Dosenschie\xDFen2000"
+    Value: 1

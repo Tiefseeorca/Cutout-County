@@ -242,8 +242,8 @@ MonoBehaviour:
   _camera: {fileID: 3051497269972060775}
   _startDelay: 2
   _endDelay: 2
-  _scoreHurdles: f4010000
-  _scoreFlagsPrefix: '"CanShootingScore"'
+  _scoreHurdles: f4010000d0070000
+  _scoreFlagsPrefix: CanShootingScore
   _canPrefab: {fileID: 4120771425622967915, guid: 83fdbb9b7dbe6e14fb5484dac98fa25c, type: 3}
   _sparksPrefab: {fileID: 7105337300004875766, guid: 881ab9407a2564b449d5c0afb9a65806, type: 3}
   _startCanCooldown: 2
@@ -253,6 +253,8 @@ MonoBehaviour:
   _spawnRadius: 0.75
   _cursorTexture: {fileID: 2800000, guid: 7cfbf67eced5295419fd9a11ad537399, type: 3}
   _cursorHotspot: {x: 0.5, y: 0.5}
+  _shootingSound: 3
+  _canHitSound: 4
 --- !u!1001 &5405144354828396430
 PrefabInstance:
   m_ObjectHideFlags: 0
