@@ -14,8 +14,8 @@ public class DialogueHelper {
     }
     
     public bool DisplayNextText() {
-        if (_currentPointer >= _texts.Count) return true;
+        if (_currentPointer >= _texts.Count) return false;
         _displayFunction(_texts[_currentPointer++]);
-        return false;
+        return _currentPointer < _texts.Count;
     }
 }

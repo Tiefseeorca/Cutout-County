@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f8f507601cd64847b04b0d27c26c7b7, type: 3}
+  m_Name: CoinQuestFinish
+  m_EditorClassIdentifier: Assembly-CSharp::Dialogue
+  Id: CoinQuestFinish
+  TextBoxes:
+  - "Na, sieh einer an! Du hast tats\xE4chlich alle Goldm\xFCnzen wiedergefunden!
+    Gute Arbeit, Partner. Ohne dich w\xE4ren sie wohl f\xFCr immer verschwunden geblieben.
+    Du hast Cutout County gerettet!"
+  Unique: 1
+  Seen: 0
+  RequiredFlags:
+  - Id: coin_0_FelsenParkour
+    Value: 1
+  - Id: coin_1_Saloon
+    Value: 1
+  - Id: coin_3_Mine2
+    Value: 1
+  - Id: coin_4_PharmacyBox
+    Value: 1
+  - Id: coin_5_LuzzStatue
+    Value: 1
+  - Id: coin_6_Scheune
+    Value: 1
+  - Id: "coin_8_Dosenschie\xDFen500"
+    Value: 1
+  - Id: "coin_9_Dosenschie\xDFen2000"
+    Value: 1
+  SetFlags: []
