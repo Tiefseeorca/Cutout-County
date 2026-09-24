@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     private IEnumerator _doWalkingSound() {
-        const float stepCooldown = 0.4f;
+        const float stepCooldown = 0.5f;
         float stepTimer = 0.25f;
         while (true) {
             if (_grounded && _walkAction.IsPressed()) {

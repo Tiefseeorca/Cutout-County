@@ -13,19 +13,25 @@ MonoBehaviour:
   m_Name: GameFlags
   m_EditorClassIdentifier: Assembly-CSharp::GameFlags
   _gameFlags:
-  - Id: TestQuestActivationReq
+  - Id: coin_0_FelsenParkour
     Value: 0
-  - Id: TestQuestCompletionReq
+  - Id: coin_1_Saloon
     Value: 0
-  - Id: TestQuestCompletionReq2
-    Value: 1
-  - Id: TestQuestCompletionReq3
+  - Id: coin_2_Mine1
     Value: 0
-  - Id: TestQuest_COMPLETED
+  - Id: coin_3_Mine2
     Value: 0
-  - Id: coin_1
+  - Id: coin_4_PharmacyBox
     Value: 0
-  - Id: coin_2
+  - Id: coin_5_LuzzStatue
     Value: 0
-  - Id: coin_3
+  - Id: coin_6_Scheune
+    Value: 0
+  - Id: coin_7_Bank
+    Value: 0
+  - Id: "coin_8_Dosenschie\xDFen500"
+    Value: 0
+  - Id: CanShootingScore500
+    Value: 0
+  - Id: CanShootingScore2000
     Value: 0

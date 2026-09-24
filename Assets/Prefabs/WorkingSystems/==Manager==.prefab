@@ -46,6 +46,62 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::QuestManager
   _inactiveQuests:
   - {fileID: 11400000, guid: ea71d8444e9344f4db23c59fa032bbb3, type: 2}
+--- !u!1 &4827692058497129299
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7592482937348434264}
+  - component: {fileID: 205533745560012881}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7592482937348434264
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4827692058497129299}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2912613816262661197}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &205533745560012881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4827692058497129299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eac5e47404b5f1e47b4875a67499f63d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManager
+  _sfxSource: {fileID: 4679599539758185495, guid: 2f9829cc2b811874aa4a06568f33e63b, type: 3}
+  _sfxItems:
+  - Id: 0
+    Clip: {fileID: 8300000, guid: f842e00525e9bf145a63f37895a71626, type: 3}
+  - Id: 1
+    Clip: {fileID: 8300000, guid: a04cb3a858d63ca4eb50fced5145d082, type: 3}
+  - Id: 2
+    Clip: {fileID: 8300000, guid: 9a8f96f20226bc949b77752a2d54800f, type: 3}
+  - Id: 3
+    Clip: {fileID: 8300000, guid: 7aa7a95ba26f0f642a849814dde489e9, type: 3}
+  - Id: 4
+    Clip: {fileID: 8300000, guid: 0ee3d7b0e288ebe4783e80391f54fc14, type: 3}
 --- !u!1 &6418915297888544148
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,12 +149,7 @@ MonoBehaviour:
   _dialogues:
     DictItems:
     - NPC_ID: Test_NPC
-      Dialogues:
-      - {fileID: 11400000, guid: 77a2e7fd944f64847904f250f182f0d6, type: 2}
-      - {fileID: 11400000, guid: edc51c96068aabb4ebc30f1c3fab88bb, type: 2}
-      - {fileID: 11400000, guid: 4f8b34e82be1f634d8e151efc6a05029, type: 2}
-      - {fileID: 11400000, guid: a2136e67bb0dd1d4cacf5dc229a2b655, type: 2}
-      - {fileID: 11400000, guid: c5cf607b39caa00448ab469d17577f0c, type: 2}
+      Dialogues: []
 --- !u!1 &6861228985893254384
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,6 +183,7 @@ Transform:
   - {fileID: 4665747070762817674}
   - {fileID: 7298772299324527653}
   - {fileID: 1598460220752133777}
+  - {fileID: 7592482937348434264}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7977944568243049218

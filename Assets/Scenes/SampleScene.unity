@@ -1123,62 +1123,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 2
---- !u!1 &1765590036
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1765590038}
-  - component: {fileID: 1765590037}
-  m_Layer: 0
-  m_Name: AudioManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1765590037
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1765590036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eac5e47404b5f1e47b4875a67499f63d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AudioManager
-  _sfxSource: {fileID: 4679599539758185495, guid: 2f9829cc2b811874aa4a06568f33e63b, type: 3}
-  _sfxItems:
-  - Id: 0
-    Clip: {fileID: 8300000, guid: f842e00525e9bf145a63f37895a71626, type: 3}
-  - Id: 1
-    Clip: {fileID: 8300000, guid: a04cb3a858d63ca4eb50fced5145d082, type: 3}
-  - Id: 2
-    Clip: {fileID: 8300000, guid: 9a8f96f20226bc949b77752a2d54800f, type: 3}
-  - Id: 3
-    Clip: {fileID: 8300000, guid: 7aa7a95ba26f0f642a849814dde489e9, type: 3}
-  - Id: 4
-    Clip: {fileID: 8300000, guid: 96c0aebe73316ae4d93fecbdf3531e0c, type: 3}
---- !u!4 &1765590038
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1765590036}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1876947563 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8744859405728275554, guid: 440c374c1f9a7174aa32e252d4b96566, type: 3}
@@ -1234,10 +1178,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2905297671162587981, guid: 05777c6a6f2c25e44bd5a47d34b7b52d, type: 3}
-      propertyPath: _dialogues.DictItems.Array.data[0].Dialogues.Array.size
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2912613816262661197, guid: 05777c6a6f2c25e44bd5a47d34b7b52d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1315,6 +1255,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 677365044428926508, guid: e5576ba4088e7544c8cb5b66c30d9d22, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2915894473199394908, guid: bcf565f7da04ed443a12a654d5a9835a, type: 2}
+    - target: {fileID: 677365044428926508, guid: e5576ba4088e7544c8cb5b66c30d9d22, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1715764990806113977, guid: e5576ba4088e7544c8cb5b66c30d9d22, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8179019115651351218, guid: e5576ba4088e7544c8cb5b66c30d9d22, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1473,4 +1425,3 @@ SceneRoots:
   - {fileID: 6473384586880813094}
   - {fileID: 4016401715007160997}
   - {fileID: 316007586}
-  - {fileID: 1765590038}
