@@ -111,6 +111,7 @@ public class UIManager : MonoBehaviour {
         _pauseScreen.SetActive(true);
         Time.timeScale = 0;
         _isPaused = true;
+        AudioManager.Instance.PauseCurrentMusic();
     }
 
     public void Resume(){
@@ -118,6 +119,7 @@ public class UIManager : MonoBehaviour {
         _pauseScreen.SetActive(false);
         Time.timeScale = 1;
         _isPaused = false;
+        AudioManager.Instance.ResumeCurrentMusic();
     }
 
     public void OpenOptions() {

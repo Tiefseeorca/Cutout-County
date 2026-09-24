@@ -19,19 +19,32 @@ public class AudioManager : MonoBehaviour {
     }
     
     public static AudioManager Instance;
+    [SerializeField] private AudioSource _musicSource;
     [SerializeField] private AudioSource _sfxSource;
     private Dictionary<AudioIDs, AudioClip> _musicClips;
     private Dictionary<AudioIDs, AudioClip> _sfxClips;
+    [SerializeField] private AudioItem[] _musicItems;
     [SerializeField] private AudioItem[] _sfxItems;
+    private AudioSource _currentMusic;
 
     private void Awake() {
         Instance = this;
+        _musicClips = AudioItem.TurnItemsToDict(_musicItems);
         _sfxClips = AudioItem.TurnItemsToDict(_sfxItems);
     }
 
     public void PlayMusic(AudioIDs audioId) {
-        throw new NotImplementedException("There is no music in the game to be played :(");
+        AudioSource source = Instantiate(_musicSource);
+        AudioClip clip;
+        if (_musicClips.TryGetValue(audioId, out clip)) {
+            source.clip = clip;
+            source.Play();
+            _currentMusic = source;
+        }
     }
+    
+    public void PauseCurrentMusic() { _currentMusic.Pause(); }
+    public void ResumeCurrentMusic() { _currentMusic.Play(); }
 
     public void PlaySfx(AudioIDs audioId, float pitch = 1f, float pitchVary = 0.2f) {
         AudioSource source = Instantiate(_sfxSource);

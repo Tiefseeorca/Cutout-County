@@ -39,3 +39,5 @@ MonoBehaviour:
     Value: 0
   - Id: CoinQuestActivation
     Value: 0
+  - Id: GameStart
+    Value: 0

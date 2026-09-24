@@ -1,5 +1,5 @@
 using UnityEngine;
 
 public enum AudioIDs {
-    GroundStep, WoodStep, StoneStep, Shot, CanHit
+    GroundStep, WoodStep, StoneStep, Shot, CanHit, Ambience
 }

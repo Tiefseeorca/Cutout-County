@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour {
 		for (int i = 0; i < 2; i++) {
 			yield return null;
 		}
+		AudioManager.Instance.PlayMusic(AudioIDs.Ambience);
 		GameStarted.Invoke();
 	}
 }
