@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private float _maxSpeed;
     [SerializeField] private float _deceleration;
     public float jumpForce;
+    [SerializeField] private AudioIDs _walkAudioId;
     [SerializeField] private float _distanceToGround;
     [SerializeField] private float _springStrength;
     [SerializeField] private float _springDamper;
@@ -36,6 +37,7 @@ public class PlayerController : MonoBehaviour {
         _cameraTransform = transform.GetChild(0).GetChild(0);
         _camera = _cameraTransform.GetComponent<POVCameraHelper>();
         _standardGravity = Physics.gravity.y;
+        StartCoroutine(_doWalkingSound());
     }
 
     void FixedUpdate() {
@@ -95,6 +97,24 @@ public class PlayerController : MonoBehaviour {
             if (newGrav < _maxGrav) newGrav = _maxGrav;
             Physics.gravity = Vector3.up * newGrav;
             if (_rb.linearVelocity.y < 0) _inJump = false;
+            yield return null;
+        }
+    }
+
+    private IEnumerator _doWalkingSound() {
+        const float stepCooldown = 0.4f;
+        float stepTimer = 0.25f;
+        while (true) {
+            if (_grounded && _walkAction.IsPressed()) {
+                stepTimer -= Time.deltaTime;
+                if(stepTimer <= 0) {
+                    AudioManager.Instance.PlaySfx(_walkAudioId);
+                    stepTimer = stepCooldown;
+                }
+            }
+            else {
+                stepTimer = 0.25f;
+            }
             yield return null;
         }
     }

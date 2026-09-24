@@ -20,6 +20,10 @@ public class CanShootingRange : Minigame {
 	private InputAction _mousePosition;
 	private InputAction _shootAction;
 	private int _hitChain;
+	[SerializeField] private AudioIDs _shootingSound;
+	[SerializeField] private AudioIDs _canHitSound;
+	private const float _chainPitchIncrease = 0.02f;
+	private const float _comboPitchIncrease = 0.4f;
 
 	private void Start() {
 		_shootAction = InputSystem.actions.FindAction("Attack");
@@ -28,6 +32,8 @@ public class CanShootingRange : Minigame {
 	}
 
 	private void _increaseScore(int timesHit) {
+		float pitch = 1 + _hitChain * _chainPitchIncrease + (timesHit - 1) * _comboPitchIncrease;
+		AudioManager.Instance.PlaySfx(_canHitSound, transform, 1, pitch);
 		Score += timesHit * _hitChain;
 		if (Score > Highscore) Highscore = Score;
 		UIManager.Instance.UpdateMinigameScore(Score);
@@ -76,20 +82,25 @@ public class CanShootingRange : Minigame {
 		}
 		// TODO: Implement click detection here or in Can via OnMouseOver
 		if (_shootAction.WasPressedThisFrame()) {
-			Vector2 mousePos = _mousePosition.ReadValue<Vector2>();
-			Ray aimRay = CameraManager.Instance.MainCamera.ScreenPointToRay(mousePos);
-			RaycastHit aimHit;
-			if (Physics.Raycast(aimRay, out aimHit, Mathf.Infinity, LayerMask.GetMask("Can"))) {
-				Can hitCan = aimHit.collider.GetComponent<Can>();
-				if (hitCan) {
-					_hitChain++;
-					Quaternion sparkRotation = Quaternion.FromToRotation(Vector3.forward, -aimRay.direction);
-					Destroy(Instantiate(_sparksPrefab, aimHit.point, sparkRotation), 1f);
-					hitCan.OnHit();
-				} 
-			} else {
-				_hitChain = 0;
-			}
+			_shoot();
+		}
+	}
+
+	private void _shoot() {
+		AudioManager.Instance.PlaySfx(_shootingSound);
+		Vector2 mousePos = _mousePosition.ReadValue<Vector2>();
+		Ray aimRay = CameraManager.Instance.MainCamera.ScreenPointToRay(mousePos);
+		RaycastHit aimHit;
+		if (Physics.Raycast(aimRay, out aimHit, Mathf.Infinity, LayerMask.GetMask("Can"))) {
+			Can hitCan = aimHit.collider.GetComponent<Can>();
+			if (hitCan) {
+				_hitChain++;
+				Quaternion sparkRotation = Quaternion.FromToRotation(Vector3.forward, -aimRay.direction);
+				Destroy(Instantiate(_sparksPrefab, aimHit.point, sparkRotation), 1f);
+				hitCan.OnHit();
+			} 
+		} else {
+			_hitChain = 0;
 		}
 	}
 	protected override void _finishOffGame() {
