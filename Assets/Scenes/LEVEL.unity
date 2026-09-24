@@ -1446,6 +1446,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 983112047}
     m_Modifications:
+    - target: {fileID: 1722491461808484718, guid: daf61410cf5ed794badab729bbb5b2cd, type: 3}
+      propertyPath: _spawnRadius
+      value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 1722491461808484718, guid: daf61410cf5ed794badab729bbb5b2cd, type: 3}
+      propertyPath: _canLaunchForce
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4719403597429020725, guid: daf61410cf5ed794badab729bbb5b2cd, type: 3}
       propertyPath: m_Name
       value: ShootingRange

@@ -16,6 +16,7 @@ MonoBehaviour:
   TextBoxes:
   - Hi!
   - Ich bin Luzz.
+  - "Tsch\xFCss!"
   Unique: 1
   Seen: 0
   RequiredFlags: []
