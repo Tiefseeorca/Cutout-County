@@ -93,7 +93,7 @@ MonoBehaviour:
   _sfxSource: {fileID: 4679599539758185495, guid: 2f9829cc2b811874aa4a06568f33e63b, type: 3}
   _sfxItems:
   - Id: 0
-    Clip: {fileID: 8300000, guid: f842e00525e9bf145a63f37895a71626, type: 3}
+    Clip: {fileID: 8300000, guid: cfa8fe7975d146d40b4b33a7e7005359, type: 3}
   - Id: 1
     Clip: {fileID: 8300000, guid: a04cb3a858d63ca4eb50fced5145d082, type: 3}
   - Id: 2

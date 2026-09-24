@@ -105,15 +105,12 @@ public class PlayerController : MonoBehaviour {
         const float stepCooldown = 0.5f;
         float stepTimer = 0.25f;
         while (true) {
+            stepTimer -= Time.deltaTime;
             if (_grounded && _walkAction.IsPressed()) {
-                stepTimer -= Time.deltaTime;
                 if(stepTimer <= 0) {
                     AudioManager.Instance.PlaySfx(_walkAudioId);
                     stepTimer = stepCooldown;
                 }
-            }
-            else {
-                stepTimer = 0.25f;
             }
             yield return null;
         }
