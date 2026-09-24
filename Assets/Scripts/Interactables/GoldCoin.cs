@@ -10,6 +10,7 @@ public class GoldCoin : Interactable {
     private void _collect(){
         GameManager.Instance.SetFlagValue(_flagId, true);
         CoinCollected?.Invoke(_flagId);
+        AudioManager.Instance.PlaySfx(AudioIDs.CoinCollect, transform);
         
         //bool checkValue = GameManager.Instance.GetFlagValue(_flagId);
         //Debug.Log($"Münze {_flagId} eingesammelt. Wert im GameManager ist jezt: {checkValue}");
