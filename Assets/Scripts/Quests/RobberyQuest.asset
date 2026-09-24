@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 716fcb3d0b94a9b428eac471dc2fcd39, type: 3}
-  m_Name: InitialQuest
+  m_Name: RobberyQuest
   m_EditorClassIdentifier: Assembly-CSharp::Quest
-  Id: InitialQuest
+  Id: RobberyQuest
   _active: 0
   _completed: 0
-  _text: Suche den Sheriff auf.
-  _completionText: Sheriff gefunden.
+  _text: Bank erfolgreich ausgeraubt.
+  _completionText: Bank erfolgreich ausgeraubt.
   FlagsToActivate:
-  - Id: GameStart
+  - Id: coin_7_Bank
     Value: 1
   FlagsToComplete:
-  - Id: CoinQuestActivation
+  - Id: coin_7_Bank
     Value: 1

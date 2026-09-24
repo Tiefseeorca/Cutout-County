@@ -47,6 +47,7 @@ MonoBehaviour:
   _inactiveQuests:
   - {fileID: 11400000, guid: 284ffbe4d93db0f43bd41c920ba4f003, type: 2}
   - {fileID: 11400000, guid: af3891a74b04c814abb87eba15985403, type: 2}
+  - {fileID: 11400000, guid: 96c375edc4415f2479a6cdb4d99309f6, type: 2}
 --- !u!1 &4827692058497129299
 GameObject:
   m_ObjectHideFlags: 0

@@ -49,12 +49,21 @@ public class QuestManager : MonoBehaviour {
 
     public void QuestProgressUpdated() {
         UIManager.Instance.displayQuests(GetActiveQuestDescriptions());
+        UIManager.Instance.displayFinishedQuests(GetCompletedQuestDescriptions());
     }
 
     public List<string> GetActiveQuestDescriptions() {
         List<string> descs = new();
         foreach (Quest quest in _activeQuests) {
             descs.Add(quest.GetDisplayText());
+        }
+        return descs;
+    }
+
+    public List<string> GetCompletedQuestDescriptions() {
+        List<string> descs = new();
+        foreach (Quest quest in _completedQuests) {
+            descs.Add(quest.GetCompletionText());
         }
         return descs;
     }

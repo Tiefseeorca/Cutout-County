@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour {
     private DialogueHelper _dialogueHelper;
     private InputAction _dialogueContinueAction;
     [SerializeField] private TextMeshProUGUI _questsDisplay;
+    [SerializeField] private TextMeshProUGUI _completedQuestsDisplay;
     [SerializeField] private GameObject _minigameEndscreen;
     [SerializeField] private TextMeshProUGUI _minigameFinalScoreDisplay;
     [SerializeField] private TextMeshProUGUI _minigameHighscoreDisplay;
@@ -49,12 +50,11 @@ public class UIManager : MonoBehaviour {
     // In Gameplay
 
     public void displayQuests(List<string> questTexts) {
-        StringBuilder displayText = new StringBuilder();
-        foreach (string line in questTexts) {
-            displayText.Append(line);
-            displayText.Append("\n");
-        }
-        _questsDisplay.text = displayText.ToString();
+        _questsDisplay.text = _listToLines(questTexts);
+    }
+
+    public void displayFinishedQuests(List<string> questTexts) {
+        _completedQuestsDisplay.text = _listToLines(questTexts);
     }
 
     public void PlayDialogue(List<string> dialogueBoxes) {
@@ -164,5 +164,14 @@ public class UIManager : MonoBehaviour {
 
     private void _loadScene(string sceneName){
         SceneManager.LoadScene(sceneName);
+    }
+
+    private string _listToLines(List<string> texts) {
+        StringBuilder sb = new();
+        foreach (string text in texts) {
+            sb.Append(text);
+            sb.Append("\n");
+        }
+        return sb.ToString();
     }
 }
