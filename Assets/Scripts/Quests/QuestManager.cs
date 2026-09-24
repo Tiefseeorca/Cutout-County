@@ -36,6 +36,7 @@ public class QuestManager : MonoBehaviour {
     }
 
     public void CompleteQuest(string questId) {
+        AudioManager.Instance.PlaySfx(AudioIDs.QuestComplete);
         foreach (Quest quest in _activeQuests) {
             if (quest.Id == questId) {
                 _completedQuests.Add(quest);
