@@ -31,6 +31,8 @@ MonoBehaviour:
     Value: 0
   - Id: "coin_8_Dosenschie\xDFen500"
     Value: 0
+  - Id: "coin_9_Dosenschie\xDFen2000"
+    Value: 0
   - Id: CanShootingScore500
     Value: 0
   - Id: CanShootingScore2000
