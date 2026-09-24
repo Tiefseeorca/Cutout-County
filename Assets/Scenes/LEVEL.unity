@@ -1454,6 +1454,10 @@ PrefabInstance:
       propertyPath: _canLaunchForce
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1722491461808484718, guid: daf61410cf5ed794badab729bbb5b2cd, type: 3}
+      propertyPath: _scoreFlagsPrefix
+      value: CanShootingScore
+      objectReference: {fileID: 0}
     - target: {fileID: 4719403597429020725, guid: daf61410cf5ed794badab729bbb5b2cd, type: 3}
       propertyPath: m_Name
       value: ShootingRange
@@ -3915,21 +3919,73 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2905297671162587981, guid: 05777c6a6f2c25e44bd5a47d34b7b52d, type: 3}
-      propertyPath: _dialogues.DictItems.Array.data[0].NPC_ID
-      value: Luzz
+      propertyPath: _dialogues.DictItems.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2905297671162587981, guid: 05777c6a6f2c25e44bd5a47d34b7b52d, type: 3}
-      propertyPath: _dialogues.DictItems.Array.data[0].Dialogues.Array.size
-      value: 2
+      propertyPath: _dialogues.DictItems.Array.data[1].NPC_ID
+      value: "Dosenschie\xDFenCoin500"
       objectReference: {fileID: 0}
     - target: {fileID: 2905297671162587981, guid: 05777c6a6f2c25e44bd5a47d34b7b52d, type: 3}
-      propertyPath: '_dialogues.DictItems.Array.data[0].Dialogues.Array.data[0]'
+      propertyPath: _dialogues.DictItems.Array.data[2].NPC_ID
+      value: "Dosenschie\xDFenCoin2000"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2905297671162587981, guid: 05777c6a6f2c25e44bd5a47d34b7b52d, type: 3}
+      propertyPath: _dialogues.DictItems.Array.data[1].Dialogues.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2905297671162587981, guid: 05777c6a6f2c25e44bd5a47d34b7b52d, type: 3}
+      propertyPath: _dialogues.DictItems.Array.data[2].Dialogues.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2905297671162587981, guid: 05777c6a6f2c25e44bd5a47d34b7b52d, type: 3}
+      propertyPath: '_dialogues.DictItems.Array.data[1].Dialogues.Array.data[0]'
       value: 
-      objectReference: {fileID: 11400000, guid: af40c22a316956747a6a13fec9fb092e, type: 2}
+      objectReference: {fileID: 11400000, guid: 472ad0bff784c1a4d814c2785f978d13, type: 2}
     - target: {fileID: 2905297671162587981, guid: 05777c6a6f2c25e44bd5a47d34b7b52d, type: 3}
-      propertyPath: '_dialogues.DictItems.Array.data[0].Dialogues.Array.data[1]'
+      propertyPath: '_dialogues.DictItems.Array.data[1].Dialogues.Array.data[1]'
       value: 
       objectReference: {fileID: 11400000, guid: 51b4dda6414e4bb4297d583d805654b8, type: 2}
+    - target: {fileID: 2905297671162587981, guid: 05777c6a6f2c25e44bd5a47d34b7b52d, type: 3}
+      propertyPath: '_dialogues.DictItems.Array.data[1].Dialogues.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 6192802673f421d449becce73847bfa7, type: 2}
+    - target: {fileID: 2905297671162587981, guid: 05777c6a6f2c25e44bd5a47d34b7b52d, type: 3}
+      propertyPath: '_dialogues.DictItems.Array.data[1].Dialogues.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 8569186a0eda3f541ac4ee1092684385, type: 2}
+    - target: {fileID: 2905297671162587981, guid: 05777c6a6f2c25e44bd5a47d34b7b52d, type: 3}
+      propertyPath: '_dialogues.DictItems.Array.data[1].Dialogues.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 1c115bccc05bd514bad203bde1e2705e, type: 2}
+    - target: {fileID: 2905297671162587981, guid: 05777c6a6f2c25e44bd5a47d34b7b52d, type: 3}
+      propertyPath: '_dialogues.DictItems.Array.data[1].Dialogues.Array.data[5]'
+      value: 
+      objectReference: {fileID: 11400000, guid: e3ea0d2fd049f7045ba40af27064ccb2, type: 2}
+    - target: {fileID: 2905297671162587981, guid: 05777c6a6f2c25e44bd5a47d34b7b52d, type: 3}
+      propertyPath: '_dialogues.DictItems.Array.data[1].Dialogues.Array.data[6]'
+      value: 
+      objectReference: {fileID: 11400000, guid: b66262788b24f6041adb0793b850d6ef, type: 2}
+    - target: {fileID: 2905297671162587981, guid: 05777c6a6f2c25e44bd5a47d34b7b52d, type: 3}
+      propertyPath: '_dialogues.DictItems.Array.data[1].Dialogues.Array.data[7]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 41a7e697abfc94c42bfcf49f3e3175ff, type: 2}
+    - target: {fileID: 2905297671162587981, guid: 05777c6a6f2c25e44bd5a47d34b7b52d, type: 3}
+      propertyPath: '_dialogues.DictItems.Array.data[1].Dialogues.Array.data[8]'
+      value: 
+      objectReference: {fileID: 11400000, guid: a5d7c3321cd56bd4289e65f91b67bef6, type: 2}
+    - target: {fileID: 2905297671162587981, guid: 05777c6a6f2c25e44bd5a47d34b7b52d, type: 3}
+      propertyPath: '_dialogues.DictItems.Array.data[1].Dialogues.Array.data[9]'
+      value: 
+      objectReference: {fileID: 11400000, guid: b31803b9af89a63408771126d61e8ea1, type: 2}
+    - target: {fileID: 2905297671162587981, guid: 05777c6a6f2c25e44bd5a47d34b7b52d, type: 3}
+      propertyPath: '_dialogues.DictItems.Array.data[2].Dialogues.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: a270d34fad2ee4c4fb234bca9578ed0f, type: 2}
+    - target: {fileID: 2905297671162587981, guid: 05777c6a6f2c25e44bd5a47d34b7b52d, type: 3}
+      propertyPath: '_dialogues.DictItems.Array.data[1].Dialogues.Array.data[10]'
+      value: 
+      objectReference: {fileID: 11400000, guid: e72037c32a7a0fe45bc39c35f79534b4, type: 2}
     - target: {fileID: 2912613816262661197, guid: 05777c6a6f2c25e44bd5a47d34b7b52d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3986,10 +4042,6 @@ PrefabInstance:
       propertyPath: PlayerCamera
       value: 
       objectReference: {fileID: 1787808212}
-    - target: {fileID: 7645643220711426770, guid: 05777c6a6f2c25e44bd5a47d34b7b52d, type: 3}
-      propertyPath: Cameras.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7645643220711426770, guid: 05777c6a6f2c25e44bd5a47d34b7b52d, type: 3}
       propertyPath: 'Cameras.Array.data[0]'
       value: 
@@ -12367,16 +12419,8 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 677365044428926508, guid: e5576ba4088e7544c8cb5b66c30d9d22, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 2915894473199394908, guid: bcf565f7da04ed443a12a654d5a9835a, type: 2}
-    - target: {fileID: 1715764990806113977, guid: e5576ba4088e7544c8cb5b66c30d9d22, type: 3}
-      propertyPath: m_IsActive
+      propertyPath: m_hasFontAssetChanged
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4098338068667016581, guid: e5576ba4088e7544c8cb5b66c30d9d22, type: 3}
-      propertyPath: m_text
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8179019115651351218, guid: e5576ba4088e7544c8cb5b66c30d9d22, type: 3}
       propertyPath: m_Pivot.x

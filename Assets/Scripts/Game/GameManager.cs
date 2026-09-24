@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void SetFlagValue(string flagId, bool value) {
+		Debug.Log("Setting flag \"" + flagId + $"\" to {value}.");
 		_gameFlags.SetGameFlag(flagId, value);
 	}
 	

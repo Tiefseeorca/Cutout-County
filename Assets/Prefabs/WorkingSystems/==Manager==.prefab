@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuestManager
   _inactiveQuests:
-  - {fileID: 11400000, guid: ea71d8444e9344f4db23c59fa032bbb3, type: 2}
+  - {fileID: 11400000, guid: af3891a74b04c814abb87eba15985403, type: 2}
 --- !u!1 &4827692058497129299
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,6 +152,15 @@ MonoBehaviour:
       Dialogues:
       - {fileID: 11400000, guid: af40c22a316956747a6a13fec9fb092e, type: 2}
       - {fileID: 11400000, guid: 51b4dda6414e4bb4297d583d805654b8, type: 2}
+      - {fileID: 11400000, guid: 6192802673f421d449becce73847bfa7, type: 2}
+      - {fileID: 11400000, guid: 8569186a0eda3f541ac4ee1092684385, type: 2}
+      - {fileID: 11400000, guid: 1c115bccc05bd514bad203bde1e2705e, type: 2}
+      - {fileID: 11400000, guid: e3ea0d2fd049f7045ba40af27064ccb2, type: 2}
+      - {fileID: 11400000, guid: b66262788b24f6041adb0793b850d6ef, type: 2}
+      - {fileID: 11400000, guid: 41a7e697abfc94c42bfcf49f3e3175ff, type: 2}
+      - {fileID: 11400000, guid: a5d7c3321cd56bd4289e65f91b67bef6, type: 2}
+      - {fileID: 11400000, guid: b31803b9af89a63408771126d61e8ea1, type: 2}
+      - {fileID: 11400000, guid: e72037c32a7a0fe45bc39c35f79534b4, type: 2}
 --- !u!1 &6861228985893254384
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,7 +288,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraManager
   Cameras:
-  - {fileID: 0}
   - {fileID: 0}
   StartCamera: {fileID: 0}
   PlayerCamera: {fileID: 0}
