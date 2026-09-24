@@ -148,8 +148,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueManager
   _dialogues:
     DictItems:
-    - NPC_ID: Test_NPC
-      Dialogues: []
+    - NPC_ID: Luzz
+      Dialogues:
+      - {fileID: 11400000, guid: af40c22a316956747a6a13fec9fb092e, type: 2}
+      - {fileID: 11400000, guid: 51b4dda6414e4bb4297d583d805654b8, type: 2}
 --- !u!1 &6861228985893254384
 GameObject:
   m_ObjectHideFlags: 0

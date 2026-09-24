@@ -64,6 +64,7 @@ public class UIManager : MonoBehaviour {
     }
 
     private void _displaySingleDialogueText(string text) {
+        Debug.Log(text);
         _dialogueBoxText.text = text;
     }
 
@@ -71,7 +72,9 @@ public class UIManager : MonoBehaviour {
         bool inDialogue = true;
         while (inDialogue) {
             inDialogue = _dialogueHelper.DisplayNextText();
-            yield return new WaitUntil(() => _dialogueContinueAction.IsPressed());
+            Debug.Log(inDialogue);
+            yield return new WaitForSeconds(0.1f);
+            yield return new WaitUntil(() => _dialogueContinueAction.WasPressedThisFrame());
         }
         _dialogueHelper = null;
         _dialogueBox.SetActive(false);
