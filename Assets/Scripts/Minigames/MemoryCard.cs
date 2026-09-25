@@ -13,7 +13,8 @@ public class MemoryCard : MonoBehaviour{
 
     public void Flip(){
         IsFlipped = !IsFlipped;
-    }
+        transform.Rotate(0f, 180f, 0f);
+        }
 
     public void SetMatched(){
         IsMatched = true;
