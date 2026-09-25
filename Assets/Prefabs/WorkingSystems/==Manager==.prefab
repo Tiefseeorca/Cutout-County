@@ -45,7 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuestManager
   _inactiveQuests:
+  - {fileID: 11400000, guid: 284ffbe4d93db0f43bd41c920ba4f003, type: 2}
   - {fileID: 11400000, guid: af3891a74b04c814abb87eba15985403, type: 2}
+  - {fileID: 11400000, guid: 96c375edc4415f2479a6cdb4d99309f6, type: 2}
 --- !u!1 &4827692058497129299
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,7 +92,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eac5e47404b5f1e47b4875a67499f63d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
+  _musicSource: {fileID: 6915091299296513306, guid: 61d8b535665d3924a8972f7d66934281, type: 3}
   _sfxSource: {fileID: 4679599539758185495, guid: 2f9829cc2b811874aa4a06568f33e63b, type: 3}
+  _musicItems:
+  - Id: 5
+    Clip: {fileID: 8300000, guid: 07d36b6b7f4cd9245945650549cf4256, type: 3}
   _sfxItems:
   - Id: 0
     Clip: {fileID: 8300000, guid: cfa8fe7975d146d40b4b33a7e7005359, type: 3}
@@ -100,6 +106,10 @@ MonoBehaviour:
     Clip: {fileID: 8300000, guid: 9a8f96f20226bc949b77752a2d54800f, type: 3}
   - Id: 3
     Clip: {fileID: 8300000, guid: 7aa7a95ba26f0f642a849814dde489e9, type: 3}
+  - Id: 6
+    Clip: {fileID: 8300000, guid: 341a6249abfc86c4aa8aba7637726a5c, type: 3}
+  - Id: 7
+    Clip: {fileID: 8300000, guid: aaf26ab83435ae34293670381d57eef8, type: 3}
   - Id: 4
     Clip: {fileID: 8300000, guid: 0ee3d7b0e288ebe4783e80391f54fc14, type: 3}
 --- !u!1 &6418915297888544148
@@ -161,6 +171,13 @@ MonoBehaviour:
       - {fileID: 11400000, guid: a5d7c3321cd56bd4289e65f91b67bef6, type: 2}
       - {fileID: 11400000, guid: b31803b9af89a63408771126d61e8ea1, type: 2}
       - {fileID: 11400000, guid: e72037c32a7a0fe45bc39c35f79534b4, type: 2}
+      - {fileID: 11400000, guid: 1098e631502992244b170456230d7775, type: 2}
+    - NPC_ID: "Dosenschie\xDFenCoin500"
+      Dialogues:
+      - {fileID: 11400000, guid: 472ad0bff784c1a4d814c2785f978d13, type: 2}
+    - NPC_ID: "Dosenschie\xDFenCoin2000"
+      Dialogues:
+      - {fileID: 11400000, guid: a270d34fad2ee4c4fb234bca9578ed0f, type: 2}
 --- !u!1 &6861228985893254384
 GameObject:
   m_ObjectHideFlags: 0

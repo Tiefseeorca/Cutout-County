@@ -7,6 +7,7 @@ public class Quest : ScriptableObject {
     [SerializeField] private bool _active;
     [SerializeField] private bool _completed;
     [SerializeField] private string _text;
+    [SerializeField] private string _completionText;
     public Flag[] FlagsToActivate;
     public Flag[] FlagsToComplete;
 
@@ -20,6 +21,10 @@ public class Quest : ScriptableObject {
             res += $" ({GameManager.Instance.GetMatchingFlagAmount(FlagsToComplete)}/{FlagsToComplete.Length})";
         }
         return res;
+    }
+
+    public string GetCompletionText() {
+        return _completionText;
     }
 
     private void _activate() {
@@ -44,7 +49,10 @@ public class Quest : ScriptableObject {
             QuestManager.Instance.QuestProgressUpdated();
         } else if (!_completed) {
             // The quest is neither active nor completed, checking if it should be activated
-            if (GameManager.Instance.DoFlagsMatch(FlagsToActivate)) _activate();
+            if (GameManager.Instance.DoFlagsMatch(FlagsToActivate)) {
+                _activate();
+                _checkFlags(changedFlag);
+            }
         }
     }
     

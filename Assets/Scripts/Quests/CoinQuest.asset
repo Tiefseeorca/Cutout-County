@@ -16,6 +16,7 @@ MonoBehaviour:
   _active: 0
   _completed: 0
   _text: "Sammle die gestohlenen M\xFCnzen!"
+  _completionText: "Alle gestohlenen M\xFCnzen gefunden."
   FlagsToActivate:
   - Id: CoinQuestActivation
     Value: 1
