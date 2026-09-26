@@ -18,8 +18,8 @@ MonoBehaviour:
   _text: "Schlage die Entwickler im Dosenschie\xDFen."
   _completionText: "Schlage die Entwickler im Dosenschie\xDFen."
   FlagsToActivate:
-  - Id: CanShootingScore3057
+  - Id: CanShootingScore3415
     Value: 1
   FlagsToComplete:
-  - Id: CanShootingScore3057
+  - Id: CanShootingScore3415
     Value: 1
