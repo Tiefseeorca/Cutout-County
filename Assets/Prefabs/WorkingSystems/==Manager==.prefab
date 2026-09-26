@@ -48,6 +48,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 284ffbe4d93db0f43bd41c920ba4f003, type: 2}
   - {fileID: 11400000, guid: af3891a74b04c814abb87eba15985403, type: 2}
   - {fileID: 11400000, guid: 96c375edc4415f2479a6cdb4d99309f6, type: 2}
+  - {fileID: 11400000, guid: 254c5300628b9234fa4061cc0142c568, type: 2}
 --- !u!1 &4827692058497129299
 GameObject:
   m_ObjectHideFlags: 0
@@ -112,6 +113,22 @@ MonoBehaviour:
     Clip: {fileID: 8300000, guid: aaf26ab83435ae34293670381d57eef8, type: 3}
   - Id: 4
     Clip: {fileID: 8300000, guid: 0ee3d7b0e288ebe4783e80391f54fc14, type: 3}
+  - Id: 8
+    Clip: {fileID: 8300000, guid: d79c5c3148e4c76419889b32ad34690d, type: 3}
+  - Id: 9
+    Clip: {fileID: 8300000, guid: 73e1f08b49c470d4ca8b684a1cfba9b0, type: 3}
+  - Id: 10
+    Clip: {fileID: 8300000, guid: eaca8052ce73ade4ebb5b0a4f7a9d9fb, type: 3}
+  - Id: 11
+    Clip: {fileID: 8300000, guid: 13b51ae80a8185945b404c9f98367606, type: 3}
+  - Id: 12
+    Clip: {fileID: 8300000, guid: 4a2583ca110a1a84aaa33c141195aa15, type: 3}
+  - Id: 13
+    Clip: {fileID: 8300000, guid: 403d3c87fa5519a4ab556df0ea51cd47, type: 3}
+  - Id: 14
+    Clip: {fileID: 8300000, guid: 8d03d40c4498f744fbc798dd8e908fa1, type: 3}
+  - Id: 15
+    Clip: {fileID: 8300000, guid: 8898ff315caa6c843a63e2ba5b14b4c2, type: 3}
 --- !u!1 &6418915297888544148
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,6 +187,7 @@ MonoBehaviour:
       - {fileID: 11400000, guid: 41a7e697abfc94c42bfcf49f3e3175ff, type: 2}
       - {fileID: 11400000, guid: a5d7c3321cd56bd4289e65f91b67bef6, type: 2}
       - {fileID: 11400000, guid: b31803b9af89a63408771126d61e8ea1, type: 2}
+      - {fileID: 11400000, guid: 03930f07113beec4ebb88a9e36678006, type: 2}
       - {fileID: 11400000, guid: e72037c32a7a0fe45bc39c35f79534b4, type: 2}
       - {fileID: 11400000, guid: 1098e631502992244b170456230d7775, type: 2}
     - NPC_ID: "Dosenschie\xDFenCoin500"
@@ -178,6 +196,9 @@ MonoBehaviour:
     - NPC_ID: "Dosenschie\xDFenCoin2000"
       Dialogues:
       - {fileID: 11400000, guid: a270d34fad2ee4c4fb234bca9578ed0f, type: 2}
+    - NPC_ID: MemoryCoin500
+      Dialogues:
+      - {fileID: 11400000, guid: 025afe31cb18f9c47a43391b97f9e968, type: 2}
 --- !u!1 &6861228985893254384
 GameObject:
   m_ObjectHideFlags: 0

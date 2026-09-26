@@ -13,6 +13,18 @@ MonoBehaviour:
   m_Name: GameFlags
   m_EditorClassIdentifier: Assembly-CSharp::GameFlags
   _gameFlags:
+  - Id: GameStart
+    Value: 0
+  - Id: CoinQuestActivation
+    Value: 0
+  - Id: CanShootingScore500
+    Value: 0
+  - Id: CanShootingScore2000
+    Value: 0
+  - Id: CanShootingScore3057
+    Value: 0
+  - Id: MemoryScore500
+    Value: 0
   - Id: coin_0_FelsenParkour
     Value: 0
   - Id: coin_1_Saloon
@@ -33,11 +45,5 @@ MonoBehaviour:
     Value: 0
   - Id: "coin_9_Dosenschie\xDFen2000"
     Value: 0
-  - Id: CanShootingScore500
-    Value: 0
-  - Id: CanShootingScore2000
-    Value: 0
-  - Id: CoinQuestActivation
-    Value: 0
-  - Id: GameStart
+  - Id: coin_10_Memory500
     Value: 0

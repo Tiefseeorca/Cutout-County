@@ -94,8 +94,8 @@ MonoBehaviour:
   _camera: {fileID: 4274707972297930606}
   _startDelay: 2
   _endDelay: 2
-  _scoreHurdles: 
-  _scoreFlagsPrefix: 
+  _scoreHurdles: f4010000
+  _scoreFlagsPrefix: MemoryScore
   _gameDuration: 60
   _sockets:
   - {fileID: 4204078708851566111}
