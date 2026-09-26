@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+/// <summary>
+/// Author: Timo Lauterbach
+/// </summary>
 public class DialogueManager : MonoBehaviour {
     [Serializable]
     private struct DictItem {

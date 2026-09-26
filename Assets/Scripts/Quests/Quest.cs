@@ -1,6 +1,9 @@
 using System;
 using UnityEngine;
 
+/// <summary>
+/// Author: Timo Lauterbach
+/// </summary>
 [CreateAssetMenu(fileName = "Quest", menuName = "Scriptable Objects/Quest")]
 public class Quest : ScriptableObject {
     public string Id;

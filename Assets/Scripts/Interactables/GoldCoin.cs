@@ -2,6 +2,9 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 
+/// <summary>
+/// Author: Burak Namazci
+/// </summary>
 public class GoldCoin : Interactable {
     public static UnityEvent<string> CoinCollected;
     [SerializeField] private string _flagId;
