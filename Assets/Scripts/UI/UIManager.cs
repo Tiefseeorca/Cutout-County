@@ -8,6 +8,9 @@ using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
+/// <summary>
+/// Author: Timo Lauterbach & Burak Namazci
+/// </summary>
 public class UIManager : MonoBehaviour {
     public static UIManager Instance;
     [SerializeField] private GameObject _pauseScreen;
@@ -26,6 +29,7 @@ public class UIManager : MonoBehaviour {
     private bool _isPaused = false;
     private CursorLockMode _unpausedLockMode;
 
+    // Timo Lauterbach
     private void Awake(){
         Instance = this;
 
@@ -36,6 +40,7 @@ public class UIManager : MonoBehaviour {
         _dialogueContinueAction = InputSystem.actions.FindAction("Jump");
     }
 
+    // Burak Namazci
     private void Update(){
         if (Keyboard.current.escapeKey.wasPressedThisFrame){
             if (_isPaused == true){
@@ -49,24 +54,33 @@ public class UIManager : MonoBehaviour {
 
     // In Gameplay
 
+    // Timo Lauterbach
     public void displayQuests(List<string> questTexts) {
         _questsDisplay.text = _listToLines(questTexts);
     }
 
+    // Timo Lauterbach
     public void displayFinishedQuests(List<string> questTexts) {
         _completedQuestsDisplay.text = _listToLines(questTexts);
     }
 
+    /// <summary>
+    /// <p>Takes all dialogue to display and starts a Coroutine that displays the dialogue correctly</p>
+    /// <p>Author: Timo Lauterbach</p>
+    /// </summary>
+    /// <param name="dialogueBoxes">A list of the texts for all dialogue boxes to display</param>
     public void PlayDialogue(List<string> dialogueBoxes) {
         _dialogueBox.SetActive(true);
         _dialogueHelper = new DialogueHelper(dialogueBoxes, _displaySingleDialogueText);
         StartCoroutine(_listenForDialogueContinueInput());
     }
 
+    // Timo Lauterbach
     private void _displaySingleDialogueText(string text) {
         _dialogueBoxText.text = text;
     }
 
+    // Timo Lauterbach
     private IEnumerator _listenForDialogueContinueInput() {
         bool inDialogue = true;
         while (inDialogue) {
@@ -79,15 +93,18 @@ public class UIManager : MonoBehaviour {
         Dialogue.DialogueFinished.Invoke();
     }
 
+    // Timo Lauterbach
     public void ShowMinigameUI() {
         _minigameUI.SetActive(true);
         _questsDisplay.gameObject.SetActive(false);
     }
 
+    // Timo Lauterbach
     public void UpdateMinigameScore(int score) {
         _minigameScoreDisplay.text = score.ToString();
     }
     
+    // Timo Lauterbach
     private IEnumerator _hideMinigameEndscreenAfterSeconds(float t, Action closeFunction) {
         yield return new WaitForSeconds(t);
         closeFunction.Invoke();
@@ -95,6 +112,7 @@ public class UIManager : MonoBehaviour {
         _questsDisplay.gameObject.SetActive(true);
     }
 
+    // Timo Lauterbach
     public void DisplayMinigameEndscreen(Minigame minigame) {
         _minigameEndscreen.SetActive(true);
         _minigameFinalScoreDisplay.text = minigame.Score.ToString();
@@ -105,6 +123,7 @@ public class UIManager : MonoBehaviour {
     
     // On Button / Key Press
 
+    // Burak Namazci
     public void Pause() {
         _unpausedLockMode = Cursor.lockState;
         Cursor.lockState = CursorLockMode.None;
@@ -114,6 +133,7 @@ public class UIManager : MonoBehaviour {
         AudioManager.Instance.PauseCurrentMusic();
     }
 
+    // Burak Namazci
     public void Resume(){
         Cursor.lockState = _unpausedLockMode;
         _pauseScreen.SetActive(false);
@@ -130,6 +150,7 @@ public class UIManager : MonoBehaviour {
         throw new NotImplementedException("TODO");
     }
 
+    // Burak Namazci
     public void BackToMenu(){
         Time.timeScale = 1f;
         _loadScene("MainMenu");
@@ -137,10 +158,12 @@ public class UIManager : MonoBehaviour {
     
     // Main Menu
     
+    // Burak Namazci
     public void StartGame(){
         _loadScene("LEVEL");
     }
     
+    // Burak Namazci
     public void QuitGame(){
         Debug.Log("Quitting game");
         Application.Quit();
@@ -162,10 +185,17 @@ public class UIManager : MonoBehaviour {
     
     // Helpers
 
+    // Timo Lauterbach
     private void _loadScene(string sceneName){
         SceneManager.LoadScene(sceneName);
     }
 
+    /// <summary>
+    /// <p>Converts a list of strings into a single string with each entry separated by a new line.</p>
+    /// <p>Author: Timo Lauterbach</p>
+    /// </summary>
+    /// <param name="texts">A list of any strings</param>
+    /// <returns>All strings from the list in one string, separated by a new line</returns>
     private string _listToLines(List<string> texts) {
         StringBuilder sb = new();
         foreach (string text in texts) {

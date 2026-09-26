@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 
+/// <summary>
+/// Author: Timo Lauterbach & Burak Namazci (old version)
+/// </summary>
 public class PlayerController : MonoBehaviour {
     public static PlayerController Instance;
     public float speed;

@@ -2,6 +2,9 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// Author: Burak Namazci
+/// </summary>
 public class NPC : Interactable{
     public string Name;
     [SerializeField] private GameObject _questSymbol;

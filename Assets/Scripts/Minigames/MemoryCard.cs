@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Author: Burak Namazci
+/// </summary>
 public class MemoryCard : MonoBehaviour{
     public int CardID {get; private set;}
     public bool IsFlipped {get; private set;}

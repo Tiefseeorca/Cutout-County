@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Author: Timo Lauterbach
+/// </summary>
 public class QuestManager : MonoBehaviour {
     public static QuestManager Instance;
     private List<Quest> _activeQuests = new();

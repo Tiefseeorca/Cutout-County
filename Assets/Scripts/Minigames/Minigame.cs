@@ -2,6 +2,9 @@ using System;
 using Unity.Cinemachine;
 using UnityEngine;
 
+/// <summary>
+/// Author: Timo Lauterbach
+/// </summary>
 public abstract class Minigame : MonoBehaviour {
     public const float MinigameEndScreenDuration = 4f;
     [SerializeField] private CinemachineCamera _camera;
