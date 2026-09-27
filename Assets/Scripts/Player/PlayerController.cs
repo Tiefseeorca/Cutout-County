@@ -44,11 +44,13 @@ public class PlayerController : MonoBehaviour {
     }
 
     void FixedUpdate() {
+        // Old version
         /*if (!InInteraction) {
             Vector2 input = _walkAction.ReadValue<Vector2>();
             Vector3 moveDirection = _cameraTransform.forward * input.y + _cameraTransform.right * input.x;
             _rb.linearVelocity = new Vector3(moveDirection.x * speed, _rb.linearVelocity.y, moveDirection.z * speed);
         }*/
+        // New version
         if (!InInteraction) {
             if (_walkAction.IsPressed()) {
                 Vector2 input = _walkAction.ReadValue<Vector2>();
