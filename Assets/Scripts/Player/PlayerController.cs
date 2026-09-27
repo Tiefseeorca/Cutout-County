@@ -53,46 +53,55 @@ public class PlayerController : MonoBehaviour {
         // New version
         if (!InInteraction) {
             if (_walkAction.IsPressed()) {
-                Vector2 input = _walkAction.ReadValue<Vector2>();
-                Vector3 moveDirection = _cameraTransform.forward * input.y + _cameraTransform.right * input.x;
-                moveDirection.y = 0;
-                float effectiveAccel = _grounded ? _acceleration : _acceleration / 2;
-                _rb.AddForce(moveDirection.normalized * (effectiveAccel * Time.fixedDeltaTime), ForceMode.Force);
-                Vector3 movement = _rb.linearVelocity;
-                movement.y = 0;
-                if (movement.sqrMagnitude > _maxSpeed * _maxSpeed) {
-                    movement = movement.normalized * _maxSpeed;
-                }
-
-                _rb.linearVelocity = new Vector3(movement.x, _rb.linearVelocity.y, movement.z);
+                _move();
             }
             else {
-                Vector2 movement = new(_rb.linearVelocity.x, _rb.linearVelocity.z);
-                movement = movement / (1 + _deceleration * Time.fixedDeltaTime);
-                _rb.linearVelocity = new(movement.x, _rb.linearVelocity.y, movement.y);
+                _decelerate();
             }
         }
         else _rb.linearVelocity = Vector3.zero;
         RaycastHit hit;
         _grounded = Physics.SphereCast(transform.position, 0.3f, Vector3.down, out hit, _distanceToGround) && !_inJump;
         if (_grounded) {
-            // detect if you're on a slope too steep to walk on
-            float angle = Vector3.Angle(Vector3.up, hit.normal);
-            if (angle > 60) {
-                _grounded = false;
-                Vector3 normal = hit.normal;
-                normal.y = -normal.y;
-                _rb.AddForce(normal * (_acceleration *  Time.fixedDeltaTime * (1 - angle/180)), ForceMode.Force);
-                return;
-            }
-            Physics.gravity = Vector3.up * _standardGravity;
-            float relativeVeloctiy = Vector3.Dot(Vector3.down, _rb.linearVelocity);
-            float x = hit.distance - _distanceToGround;
-            float springForce = (x * _springStrength) - (relativeVeloctiy * _springDamper);
-            _rb.AddForce(Vector3.down * springForce);
-        } else if (_rb.linearVelocity.y < 0) {
-            //_rb.mass = _mass * 2;
+            _hover(hit);
         }
+    }
+
+    private void _move() {
+        Vector2 input = _walkAction.ReadValue<Vector2>();
+        Vector3 moveDirection = _cameraTransform.forward * input.y + _cameraTransform.right * input.x;
+        moveDirection.y = 0;
+        float effectiveAccel = _grounded ? _acceleration : _acceleration / 2;
+        _rb.AddForce(moveDirection.normalized * (effectiveAccel * Time.fixedDeltaTime), ForceMode.Force);
+        Vector3 movement = _rb.linearVelocity;
+        movement.y = 0;
+        if (movement.sqrMagnitude > _maxSpeed * _maxSpeed) {
+            movement = movement.normalized * _maxSpeed;
+        }
+        _rb.linearVelocity = new Vector3(movement.x, _rb.linearVelocity.y, movement.z);
+    }
+
+    private void _decelerate() {
+        Vector2 movement = new(_rb.linearVelocity.x, _rb.linearVelocity.z);
+        movement = movement / (1 + _deceleration * Time.fixedDeltaTime);
+        _rb.linearVelocity = new(movement.x, _rb.linearVelocity.y, movement.y);
+    }
+
+    private void _hover(RaycastHit hit) {
+        // detect if you're on a slope too steep to walk on
+        float angle = Vector3.Angle(Vector3.up, hit.normal);
+        if (angle > 60) {
+            _grounded = false;
+            Vector3 normal = hit.normal;
+            normal.y = -normal.y;
+            _rb.AddForce(normal * (_acceleration *  Time.fixedDeltaTime * (1 - angle/180)), ForceMode.Force);
+            return;
+        }
+        Physics.gravity = Vector3.up * _standardGravity;
+        float relativeVeloctiy = Vector3.Dot(Vector3.down, _rb.linearVelocity);
+        float x = hit.distance - _distanceToGround;
+        float springForce = (x * _springStrength) - (relativeVeloctiy * _springDamper);
+        _rb.AddForce(Vector3.down * springForce);
     }
 
     private IEnumerator _increaseGravityInJump() {

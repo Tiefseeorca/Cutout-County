@@ -14,6 +14,7 @@ public class Quest : ScriptableObject {
     public Flag[] FlagsToActivate;
     public Flag[] FlagsToComplete;
 
+    // gets called by the QuestManager upon start of the game, after the object has been re-instantiated to avoid changing it in editor.
     public void AddFlagListener() {
         GameFlags.FlagChanged.AddListener(_checkFlags);
     }
@@ -42,6 +43,9 @@ public class Quest : ScriptableObject {
         QuestManager.Instance.CompleteQuest(Id);
     }
 
+    /// <summary>
+    /// Checks if the required flags for activation or completion are met. Checks twice upon activation for the case of instant completion.
+    /// </summary>
     private void _checkFlags(Flag changedFlag) {
         if (_active) {
             // The quest is active, checking if it should be completed

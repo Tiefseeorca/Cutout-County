@@ -9,7 +9,10 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 /// <summary>
-/// Author: Timo Lauterbach & Burak Namazci
+/// <p>The UIManager has access to all relevant UI elements and handles activation and deactivation of them.<br/>
+///     Can be requested to play Dialogue and display active/completed quests.<br/>
+///     This Manager is used for both in game and in the main menu.</p>
+/// <p>Author: Timo Lauterbach & Burak Namazci</p>
 /// </summary>
 public class UIManager : MonoBehaviour {
     public static UIManager Instance;

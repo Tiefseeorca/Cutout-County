@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.Events;
 
 /// <summary>
-/// Author: Timo Lauterbach
+/// <p>The GameManager is responsible for starting up the game and handling all the game's flags.</p>
+/// <p>Author: Timo Lauterbach</p>
 /// </summary>
 public class GameManager : MonoBehaviour {
 	public static GameManager Instance;

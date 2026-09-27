@@ -17,7 +17,9 @@ public abstract class Minigame : MonoBehaviour {
     [SerializeField] private int[] _scoreHurdles;
     [SerializeField] private string _scoreFlagsPrefix;
 
-    /// <summary>Call this to start a minigame. Takes away player control and changes the camera to the minigame camera.</summary>
+    /// <summary>
+    /// Call this to start a minigame. Takes away player control and changes the camera to the minigame camera.
+    /// </summary>
     public void StartMinigame() {
         PlayerController.Instance.TakeAwayControl();
         CameraManager.Instance.SwitchTo(_camera);
@@ -30,7 +32,9 @@ public abstract class Minigame : MonoBehaviour {
         UIManager.Instance.UpdateMinigameScore(Score);
     }
     
-    /// <summary>Call this to give the player control back and resume the game like normal, stopping the minigame. Use this to either cancel an ongoing minigame or at the end of one.</summary>
+    /// <summary>
+    /// Call this to give the player control back and resume the game like normal, stopping the minigame. Use this to either cancel an ongoing minigame or at the end of one.
+    /// </summary>
     public void EndMinigame() {
         _active = false;
         _ingame = false;
