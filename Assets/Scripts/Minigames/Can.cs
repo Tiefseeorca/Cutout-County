@@ -26,7 +26,7 @@ public class Can : MonoBehaviour {
         transform.Rotate(0, Random.Range(-100, 100), Random.Range(-10f, 10f));
     }
 
-    /// <summary>Resets the can back to standard values and rotation for the use in ObjectPooling.</summary>
+    /// <summary>Resets the can back to standard values and rotation for the potential use in ObjectPooling.</summary>
     public void ResetCan() {
         _timesHit = 0;
         transform.rotation = Quaternion.identity;

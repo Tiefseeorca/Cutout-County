@@ -3,7 +3,10 @@ using UnityEngine;
 using UnityEngine.Events;
 
 /// <summary>
-/// Author: Timo Lauterbach
+/// <p>TriggerZones can be used to set any flag or trigger any event upon contact or leaving the area.
+///     They can be one time or persistent.<br/>
+///     This can be used for testing, debugging or area / distance based events.</p>
+/// <p>Author: Timo Lauterbach</p>
 /// </summary>
 public class TriggerZone : MonoBehaviour {
     public Flag[] SetFlagsOnEnter;

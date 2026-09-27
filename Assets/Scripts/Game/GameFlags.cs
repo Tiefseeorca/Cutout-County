@@ -22,7 +22,9 @@ public struct Flag {
 }
 
 /// <summary>
-/// Author: Timo Lauterbach
+/// <p>A GameFlags object holds information about the state of the world, which determines which events can happen,
+///     what dialogue is available and which quests get activated or completed.</p>
+/// <p>Author: Timo Lauterbach</p>
 /// </summary>
 [CreateAssetMenu(fileName = "GameFlags", menuName = "Scriptable Objects/GameFlags")]
 public class GameFlags : ScriptableObject {

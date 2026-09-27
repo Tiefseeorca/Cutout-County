@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Author: Timo Lauterbach
+/// <p>Manages all quests and their status for display on the UI.</p>
+/// <p>Author: Timo Lauterbach</p>
 /// </summary>
 public class QuestManager : MonoBehaviour {
     public static QuestManager Instance;

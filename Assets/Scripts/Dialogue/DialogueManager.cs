@@ -13,6 +13,7 @@ public class DialogueManager : MonoBehaviour {
         public Dialogue[] Dialogues;
     }
 
+    // This is required to serialize the dialogues while still being able to use a Dictionary
     [Serializable]
     private class NewDict {
         public DictItem[] DictItems;
@@ -40,6 +41,9 @@ public class DialogueManager : MonoBehaviour {
         _dialoguesDict = _dialogues.ToDict();
     }
 
+    /// <summary>
+    /// This function is called on the DialogueFinished event to set any flags to activate quests.
+    /// </summary>
     private void _setFlagsAtDialogueEnd() {
         foreach (Flag flag in _flagsToSet) {
             GameManager.Instance.SetFlagValue(flag.Id, flag.Value);
@@ -48,6 +52,12 @@ public class DialogueManager : MonoBehaviour {
         Dialogue.DialogueFinished.RemoveListener(_setFlagsAtDialogueEnd);
     }
 
+    /// <summary>
+    /// This method looks up all currently available dialogues for a given npc and selects a random one if multiple are available.
+    /// </summary>
+    /// <param name="npcId">Name of the npc requesting dialogue.</param>
+    /// <returns>One available dialogue object.</returns>
+    /// <exception cref="ArgumentException">Gets called if the passed npc name is invalid or the npc has no dialogue.</exception>
     public Dialogue GetNextDialogue(string npcId) {
         Dialogue[] dialogues;
         if (_dialoguesDict.TryGetValue(npcId, out dialogues)) {

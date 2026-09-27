@@ -33,6 +33,11 @@ public class CanShootingRange : Minigame {
 		Can.CanGotHit.AddListener(_increaseScore);
 	}
 
+	/// <summary>
+	/// This function gets called upon a can getting hit and increases the score based on hit count on that particular can,
+	///	as well as how many cans have been hit without missing.
+	/// </summary>
+	/// <param name="timesHit">The amount of time the hit can has already been hit.</param>
 	private void _increaseScore(int timesHit) {
 		float pitch = 1 + _hitChain * _chainPitchIncrease + (timesHit - 1) * _comboPitchIncrease;
 		AudioManager.Instance.PlaySfx(_canHitSound, transform, 1, pitch);
@@ -82,7 +87,6 @@ public class CanShootingRange : Minigame {
 			_spawnCan();
 			_setCooldown();
 		}
-		// TODO: Implement click detection here or in Can via OnMouseOver
 		if (_shootAction.WasPressedThisFrame()) {
 			_shoot();
 		}
