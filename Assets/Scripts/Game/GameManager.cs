@@ -3,6 +3,9 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
+/// <summary>
+/// Author: Timo Lauterbach
+/// </summary>
 public class GameManager : MonoBehaviour {
 	public static GameManager Instance;
 	public static UnityEvent GameStarted = new();

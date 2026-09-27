@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Author: Burak Namazci
+/// </summary>
 public class ColorChangeCube : Interactable {
     private Renderer _cubeRenderer;
 

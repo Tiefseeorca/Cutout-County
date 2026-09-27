@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// Author: Timo Lauterbach
+/// </summary>
 public class DialogueHelper {
     private List<string> _texts;
     private int _currentPointer;

@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Author: Timo Lauterbach
+/// </summary>
 public class MinigameInteractable : Interactable {
 	[SerializeField] private Minigame _minigame;
 	

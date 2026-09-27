@@ -2,6 +2,9 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 
+/// <summary>
+/// Author: Timo Lauterbach
+/// </summary>
 public class TriggerZone : MonoBehaviour {
     public Flag[] SetFlagsOnEnter;
     public UnityEvent EventOnEnter;

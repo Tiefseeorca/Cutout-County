@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// Author: Burak Namazci
+/// </summary>
 public class Memory : Minigame{
     [SerializeField] private float _gameDuration = 40f;
     [SerializeField] private Transform[] _sockets;

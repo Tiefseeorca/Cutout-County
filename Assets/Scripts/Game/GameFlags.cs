@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+/// <summary>
+/// Author: Timo Lauterbach
+/// </summary>
 [Serializable]
 public struct Flag {
     public string Id;
@@ -18,6 +21,9 @@ public struct Flag {
     }
 }
 
+/// <summary>
+/// Author: Timo Lauterbach
+/// </summary>
 [CreateAssetMenu(fileName = "GameFlags", menuName = "Scriptable Objects/GameFlags")]
 public class GameFlags : ScriptableObject {
     public static UnityEvent<Flag> FlagChanged = new();

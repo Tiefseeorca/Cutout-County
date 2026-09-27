@@ -2,6 +2,9 @@ using System;
 using Unity.Cinemachine;
 using UnityEngine;
 
+/// <summary>
+/// Author: Timo Lauterbach
+/// </summary>
 public class CameraManager : MonoBehaviour {
 	public static CameraManager Instance;
 	[SerializeField] private CinemachineCamera[] Cameras;

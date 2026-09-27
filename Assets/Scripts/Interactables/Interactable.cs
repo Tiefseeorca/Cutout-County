@@ -2,6 +2,9 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// Author: Timo Lauterbach & Burak Namazci
+/// </summary>
 public abstract class Interactable : MonoBehaviour {
     [SerializeField] protected float _interactionRange;
     [SerializeField] protected InputAction _interactAction;
@@ -9,18 +12,26 @@ public abstract class Interactable : MonoBehaviour {
     [SerializeField] private MeshRenderer _outlineModel;
     [SerializeField] private Flag[] _flagsToDeactivate;
 
+    // Burak Namazci
     private void OnEnable(){
         _interactAction.Enable();
     }
 
+    // Burak Namazci
     private void OnDisable(){
         _interactAction.Disable();
     }
 
+    // Timo Lauterbach
     private void Awake() {
         GameFlags.FlagChanged.AddListener(_checkFlags);
     }
 
+    /// <summary>
+    /// <p>Checks if this Interactable should deactivate itself when a flag is changed.</p>
+    /// <p>Author: Timo Lauterbach</p>
+    /// </summary>
+    /// <param name="changedFlag">The flag that just got changed, passed by the event</param>
     private void _checkFlags(Flag changedFlag) {
         if (_flagsToDeactivate != null && _flagsToDeactivate.Length == 0) return;
         foreach (Flag flag in _flagsToDeactivate) {
@@ -30,14 +41,17 @@ public abstract class Interactable : MonoBehaviour {
         gameObject.SetActive(false);
     }
 
+    // Timo Lauterbach
     private void _showOutline() {
         _outlineModel.enabled = true;
     }
 
+    // Timo Lauterbach
     private void _hideOutline() {
         _outlineModel.enabled = false;
     }
 
+    // Timo Lauterbach & Burak Namazci
     protected virtual void Update() {
         bool interactable = _checkForInteractable();
         if (interactable) {
@@ -50,6 +64,11 @@ public abstract class Interactable : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// <p>Checks if the player is close enough and looking at the Interactable</p>
+    /// <p>Author: Burak Namazci</p>
+    /// </summary>
+    /// <returns>true if the Interactable can be interacted with, otherwise false</returns>
     protected bool _checkForInteractable() {
         Camera mainCam = Camera.main;
         if (mainCam == null) return false;
@@ -65,6 +84,6 @@ public abstract class Interactable : MonoBehaviour {
         return false;
     }
     
-    
+    // Timo Lauterbach
     public abstract void TryInteract();
 }

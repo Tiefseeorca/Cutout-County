@@ -4,6 +4,9 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using Random = UnityEngine.Random;
 
+/// <summary>
+/// Author: Timo Lauterbach
+/// </summary>
 public class Can : MonoBehaviour {
     /// <summary>Gets invoked when a can got hit. Passes the amount of times that can has already been hit</summary>
     public static UnityEvent<int> CanGotHit = new();
